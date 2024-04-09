@@ -1,0 +1,352 @@
+[
+  {
+    "Time": "2024-04-06T22:01:39.8214417+08:00",
+    "Operating": "LogIn",
+    "WorkerId": "admin1"
+  },
+  {
+    "Time": "2024-04-06T22:06:23.0559163+08:00",
+    "Operating": "LogIn",
+    "WorkerId": "worker1"
+  },
+  {
+    "Time": "2024-04-06T22:07:31.891073+08:00",
+    "Operating": "LogIn",
+    "WorkerId": "worker1"
+  },
+  {
+    "Time": "2024-04-06T22:09:55.014422+08:00",
+    "Operating": "LogIn",
+    "WorkerId": "worker1"
+  },
+  {
+    "Time": "2024-04-06T22:12:48.2279775+08:00",
+    "Operating": "LogIn",
+    "WorkerId": "worker1"
+  },
+  {
+    "Time": "2024-04-06T22:14:00.6023572+08:00",
+    "Operating": "LogIn",
+    "WorkerId": "worker1"
+  },
+  {
+    "Time": "2024-04-06T22:16:04.3435648+08:00",
+    "Operating": "LogIn",
+    "WorkerId": "worker1"
+  },
+  {
+    "Time": "2024-04-06T22:16:26.5804139+08:00",
+    "Operating": "LogIn",
+    "WorkerId": "worker1"
+  },
+  {
+    "Time": "2024-04-06T22:18:27.1044835+08:00",
+    "Operating": "LogIn",
+    "WorkerId": "worker1"
+  },
+  {
+    "Time": "2024-04-06T22:47:52.4840793+08:00",
+    "Operating": "LogIn",
+    "WorkerId": "worker1"
+  },
+  {
+    "Time": "2024-04-06T22:48:50.2566028+08:00",
+    "Operating": "LogIn",
+    "WorkerId": "worker1"
+  },
+  {
+    "Time": "2024-04-06T22:49:32.77423+08:00",
+    "Operating": "LogIn",
+    "WorkerId": "worker1"
+  },
+  {
+    "Time": "2024-04-06T22:51:50.7164755+08:00",
+    "Operating": "LogIn",
+    "WorkerId": "worker1"
+  },
+  {
+    "Time": "2024-04-06T22:54:40.1395899+08:00",
+    "Operating": "LogIn",
+    "WorkerId": "worker1"
+  },
+  {
+    "Time": "2024-04-07T16:58:14.6888377+08:00",
+    "Operating": "LogIn",
+    "WorkerId": "admin1"
+  },
+  {
+    "Time": "2024-04-07T17:01:23.9197265+08:00",
+    "Operating": "LogIn",
+    "WorkerId": "admin1"
+  },
+  {
+    "Time": "2024-04-07T17:03:58.003298+08:00",
+    "Operating": "LogIn",
+    "WorkerId": "admin1"
+  },
+  {
+    "Time": "2024-04-07T17:04:46.5157846+08:00",
+    "Operating": "LogIn",
+    "WorkerId": "admin1"
+  },
+  {
+    "Time": "2024-04-07T17:14:04.7947973+08:00",
+    "Operating": "LogIn",
+    "WorkerId": "admin1"
+  },
+  {
+    "Time": "2024-04-07T17:14:56.5293309+08:00",
+    "Operating": "LogIn",
+    "WorkerId": "admin1"
+  },
+  {
+    "Time": "2024-04-07T17:19:01.0872974+08:00",
+    "Operating": "LogIn",
+    "WorkerId": "admin1"
+  },
+  {
+    "Time": "2024-04-07T17:20:25.4368828+08:00",
+    "Operating": "LogIn",
+    "WorkerId": "admin1"
+  },
+  {
+    "Time": "2024-04-07T17:20:47.3363023+08:00",
+    "Operating": "LogIn",
+    "WorkerId": "admin1"
+  },
+  {
+    "Time": "2024-04-07T17:34:05.5522619+08:00",
+    "Operating": "LogIn",
+    "WorkerId": "admin1"
+  },
+  {
+    "Time": "2024-04-07T17:36:56.3511955+08:00",
+    "Operating": "LogIn",
+    "WorkerId": "admin1"
+  },
+  {
+    "Time": "2024-04-07T17:39:05.3686516+08:00",
+    "Operating": "LogIn",
+    "WorkerId": "admin1"
+  },
+  {
+    "Time": "2024-04-07T17:39:57.0179503+08:00",
+    "Operating": "LogIn",
+    "WorkerId": "admin1"
+  },
+  {
+    "Time": "2024-04-07T17:40:29.430754+08:00",
+    "Operating": "LogIn",
+    "WorkerId": "admin1"
+  },
+  {
+    "Time": "2024-04-07T17:46:32.7180728+08:00",
+    "Operating": "LogIn",
+    "WorkerId": "admin1"
+  },
+  {
+    "Time": "2024-04-07T17:47:07.8803371+08:00",
+    "Operating": "LogIn",
+    "WorkerId": "admin1"
+  },
+  {
+    "Time": "2024-04-07T17:51:28.5645406+08:00",
+    "Operating": "LogIn",
+    "WorkerId": "admin1"
+  },
+  {
+    "Time": "2024-04-07T17:52:20.8591149+08:00",
+    "Operating": "LogIn",
+    "WorkerId": "admin1"
+  },
+  {
+    "Time": "2024-04-07T17:53:00.4421895+08:00",
+    "Operating": "LogIn",
+    "WorkerId": "admin1"
+  },
+  {
+    "Time": "2024-04-07T17:53:34.8459768+08:00",
+    "Operating": "LogIn",
+    "WorkerId": "worker1"
+  },
+  {
+    "Time": "2024-04-07T17:54:44.2689044+08:00",
+    "Operating": "LogIn",
+    "WorkerId": "worker1"
+  },
+  {
+    "Time": "2024-04-07T17:55:28.6418862+08:00",
+    "Operating": "LogIn",
+    "WorkerId": "worker1"
+  },
+  {
+    "Time": "2024-04-07T17:55:56.275674+08:00",
+    "Operating": "LogIn",
+    "WorkerId": "worker1"
+  },
+  {
+    "Time": "2024-04-07T17:56:01.2973037+08:00",
+    "Operating": "LogIn",
+    "WorkerId": "worker1"
+  },
+  {
+    "Time": "2024-04-07T17:56:59.499431+08:00",
+    "Operating": "LogIn",
+    "WorkerId": "worker1"
+  },
+  {
+    "Time": "2024-04-07T17:57:58.2842985+08:00",
+    "Operating": "LogIn",
+    "WorkerId": "worker1"
+  },
+  {
+    "Time": "2024-04-07T17:58:46.6596845+08:00",
+    "Operating": "LogIn",
+    "WorkerId": "worker1"
+  },
+  {
+    "Time": "2024-04-07T18:00:02.1493895+08:00",
+    "Operating": "LogIn",
+    "WorkerId": "worker1"
+  },
+  {
+    "Time": "2024-04-07T18:00:23.0087777+08:00",
+    "Operating": "LogIn",
+    "WorkerId": "worker1"
+  },
+  {
+    "Time": "2024-04-07T18:00:42.2210764+08:00",
+    "Operating": "LogIn",
+    "WorkerId": "worker1"
+  },
+  {
+    "Time": "2024-04-07T18:01:55.4782693+08:00",
+    "Operating": "LogIn",
+    "WorkerId": "worker1"
+  },
+  {
+    "Time": "2024-04-07T18:02:02.0782917+08:00",
+    "Operating": "LogIn",
+    "WorkerId": "admin1"
+  },
+  {
+    "Time": "2024-04-07T22:11:16.7586022+08:00",
+    "Operating": "LogIn",
+    "WorkerId": "admin1"
+  },
+  {
+    "Time": "2024-04-07T22:13:13.2950693+08:00",
+    "Operating": "LogIn",
+    "WorkerId": "admin1"
+  },
+  {
+    "Time": "2024-04-07T22:14:41.7666531+08:00",
+    "Operating": "LogIn",
+    "WorkerId": "admin1"
+  },
+  {
+    "Time": "2024-04-07T22:15:46.4468242+08:00",
+    "Operating": "LogIn",
+    "WorkerId": "worker1"
+  },
+  {
+    "Time": "2024-04-08T14:46:12.1693158+08:00",
+    "Operating": "LogIn",
+    "WorkerId": "worker1"
+  },
+  {
+    "Time": "2024-04-08T14:49:46.8416444+08:00",
+    "Operating": "LogIn",
+    "WorkerId": "worker1"
+  },
+  {
+    "Time": "2024-04-08T14:57:52.9719236+08:00",
+    "Operating": "LogIn",
+    "WorkerId": "worker1"
+  },
+  {
+    "Time": "2024-04-08T15:10:43.6775904+08:00",
+    "Operating": "LogIn",
+    "WorkerId": "worker1"
+  },
+  {
+    "Time": "2024-04-08T15:12:11.3982125+08:00",
+    "Operating": "LogIn",
+    "WorkerId": "worker1"
+  },
+  {
+    "Time": "2024-04-08T15:13:45.2632585+08:00",
+    "Operating": "LogIn",
+    "WorkerId": "worker1"
+  },
+  {
+    "Time": "2024-04-08T15:14:30.7146955+08:00",
+    "Operating": "LogIn",
+    "WorkerId": "worker1"
+  },
+  {
+    "Time": "2024-04-08T15:15:28.0383248+08:00",
+    "Operating": "LogIn",
+    "WorkerId": "worker1"
+  },
+  {
+    "Time": "2024-04-08T15:17:35.823116+08:00",
+    "Operating": "LogIn",
+    "WorkerId": "worker1"
+  },
+  {
+    "Time": "2024-04-08T15:20:57.3706365+08:00",
+    "Operating": "LogIn",
+    "WorkerId": "worker1"
+  },
+  {
+    "Time": "2024-04-08T15:33:32.2875542+08:00",
+    "Operating": "LogIn",
+    "WorkerId": "worker1"
+  },
+  {
+    "Time": "2024-04-08T15:35:46.4156774+08:00",
+    "Operating": "LogIn",
+    "WorkerId": "worker1"
+  },
+  {
+    "Time": "2024-04-08T15:37:15.9308824+08:00",
+    "Operating": "LogIn",
+    "WorkerId": "worker1"
+  },
+  {
+    "Time": "2024-04-08T15:41:19.3679926+08:00",
+    "Operating": "LogIn",
+    "WorkerId": "worker1"
+  },
+  {
+    "Time": "2024-04-08T16:12:38.5802215+08:00",
+    "Operating": "LogIn",
+    "WorkerId": "worker1"
+  },
+  {
+    "Time": "2024-04-08T16:18:54.7578549+08:00",
+    "Operating": "LogIn",
+    "WorkerId": "worker1"
+  },
+  {
+    "Time": "2024-04-08T20:47:35.9333708+08:00",
+    "Operating": "LogIn",
+    "WorkerId": "worker1"
+  },
+  {
+    "Time": "2024-04-08T20:50:35.8198627+08:00",
+    "Operating": "LogIn",
+    "WorkerId": "admin1"
+  },
+  {
+    "Time": "2024-04-09T13:57:20.6181309+08:00",
+    "Operating": "LogIn",
+    "WorkerId": "worker1"
+  },
+  {
+    "Time": "2024-04-09T13:58:04.9579112+08:00",
+    "Operating": "LogIn",
+    "WorkerId": "admin1"
+  }
+]

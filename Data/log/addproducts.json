@@ -1,0 +1,24 @@
+[
+  {
+    "Intime": "2024-04-06T22:48:15.9729846+08:00",
+    "WorkerName": "worker1",
+    "Id": "1111",
+    "ProductName": "1111",
+    "Production_date": "1112-12-12T00:00:00",
+    "Expiration_date": "0001-01-01T00:00:00",
+    "Purchase_price": 1111.0,
+    "Selling_price": 11111.0,
+    "quantity": 1122
+  },
+  {
+    "Intime": "2024-04-07T18:01:17.5368876+08:00",
+    "WorkerName": "worker1",
+    "Id": "9999",
+    "ProductName": "9999",
+    "Production_date": "2222-02-02T00:00:00",
+    "Expiration_date": "0001-01-01T00:00:00",
+    "Purchase_price": 22.0,
+    "Selling_price": 222.0,
+    "quantity": 2222
+  }
+]
