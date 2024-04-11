@@ -61,3 +61,4 @@ C:\Users\Matho\Desktop\cs-code\obj\Debug\net8.0\refint\project.dll
 C:\Users\Matho\Desktop\cs-code\obj\Debug\net8.0\project.pdb
 C:\Users\Matho\Desktop\cs-code\obj\Debug\net8.0\project.genruntimeconfig.cache
 C:\Users\Matho\Desktop\cs-code\obj\Debug\net8.0\ref\project.dll
+C:\Users\Matho\Desktop\cs-code\obj\Debug\net8.0\project.sourcelink.json

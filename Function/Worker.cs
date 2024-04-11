@@ -1,6 +1,8 @@
 using Newtonsoft.Json;
 using System.Text;
 using System.Security.Cryptography;
+// using System.Runtime.InteropServices;
+// using System.Text.Unicode;
 
 
 namespace Worker
@@ -53,32 +55,39 @@ namespace Worker
             string chose;
             do
             {   
-                Console.WriteLine("------------------------------------------------------");
-                Console.WriteLine("0.返回上一级");
-                Console.WriteLine("1.结账");
-                Console.WriteLine("2.进货");
-                Console.WriteLine("break.下班");
-                chose = Console.ReadLine() ?? "";
-                if (chose.Equals("0",StringComparison.CurrentCultureIgnoreCase))
+                Console.WriteLine("┌────────────────────────────────────────────────────┐");
+                Console.WriteLine("│        0.返回上一级            现在是：            │");
+                Console.WriteLine("│        1.结账                {0}            │",DateTime.Now.ToString("yyyy-MM-dd"));
+                Console.WriteLine("│        2.进货                 {0}             │",DateTime.Now.ToString("HH:mm:ss"));
+                Console.WriteLine("│        3.下班               祝您工作愉快           │");
+                Console.WriteLine("└────────────────────────────────────────────────────┘");
+
+                ConsoleKeyInfo keyInfo = Console.ReadKey(true);
+                if (keyInfo.Key == ConsoleKey.D0)
                 {
+                    Console.Clear();
                     return;
                 }
-                else if (chose.Equals("1",StringComparison.CurrentCultureIgnoreCase))
+                else if (keyInfo.Key == ConsoleKey.D1)
                 {
-                    AddBillMain(operatingIdentity);
+                    Console.Clear();
+                    AddBill(operatingIdentity);
                     continue;
                 }
-                else if (chose.Equals("2",StringComparison.CurrentCultureIgnoreCase))
+                else if (keyInfo.Key == ConsoleKey.D2)
                 {
+                    Console.Clear();
                     AddProduct(operatingIdentity);
                     continue;
                 }
-                else if (chose.Equals("break",StringComparison.CurrentCultureIgnoreCase))
+                else if (keyInfo.Key == ConsoleKey.D3)
                 {
+                    Console.Clear();
                     Environment.Exit(0);
                 }
                 else
                 {
+                    Console.Clear();
                     Console.WriteLine("输入非法 重新输入");
                 }
             } while (true);
@@ -91,9 +100,8 @@ namespace Worker
         static string tmp_jsonDate = File.ReadAllText(ProductsFilePath ,new UTF8Encoding(false));
         static List<Product> have = JsonConvert.DeserializeObject<List<Product>>(tmp_jsonDate);
         
-        static void AddBillMain(string operatingIdentity)
+        static void AddBill(string operatingIdentity)
         {
-            Console.WriteLine("------------------------------------------------------");
             
             do
             {
@@ -104,19 +112,21 @@ namespace Worker
                 if (input.Equals("over",StringComparison.CurrentCultureIgnoreCase))
                 {
                     bill.Clear();
+                    Console.Clear();
                     return;
                 }
                 if (input.Equals("price",StringComparison.CurrentCultureIgnoreCase))
                 {
-                    TotalPrice(bill, have, operatingIdentity);
+                    TotalPrice(bill, operatingIdentity);
                     bill.Clear();
+                    Console.Clear();
                     continue;
                 }
                 int productId;
                 if (!int.TryParse(input,out productId)) //int检测
                 {
                     Console.Write("ID不合法:");
-                    Console.WriteLine("------------------------------------------------------");
+                    Console.Clear();
                     continue;
                 }
                 //商品存在检测
@@ -151,7 +161,7 @@ namespace Worker
         static string CostomerFilePath = Path.Combine("..", "..", "..", "Data", "costomer.json");
         
 
-        public static void TotalPrice(Dictionary<string, int> bill, List<Product> have, string operatingIdentity)
+        public static void TotalPrice(Dictionary<string, int> bill, string operatingIdentity)
         {
             double Discount = 1;  //折扣
             string isVip = null;    
@@ -518,6 +528,94 @@ namespace Worker
 
     public class Log
     {
+        static string[] NowData()
+        {
+            //第一个位置为年 第二个位置为月
+            //yyyy  yyyy-mm
+            string[] fileName = new string[2];
+            fileName[0] = DateTime.Now.ToString("yyyy"); //年
+            fileName[1] = DateTime.Now.ToString("MM");  //月
+            return fileName;
+        }
+
+        static string fileDate = Path.Combine("..", "..","..", "Data", "sellLogBuyDate");
+        static bool SellDataLog(Dictionary<string,int> bill ,string Identity ,List<Product> hava, string constomerId)
+        {
+            // sellLog = new List<LogAddProduct>();
+            string filePath = fileDate; 
+            string[] dataCreat = NowData();
+
+            if (!Directory.Exists(Path.Combine(fileDate, dataCreat[0])))// 无年文件夹
+            {
+                Directory.CreateDirectory(Path.Combine(fileDate,dataCreat[0]));//创建年文件夹
+                filePath = Path.Combine(filePath,dataCreat[0],dataCreat[1] + ".json"); //指向月json
+                List<LogProduct> addLog = new List<LogProduct>();
+                Product lookFor = new Product();
+                foreach (var item in bill)
+                    {
+                        LogProduct add = new LogProduct();
+                        lookFor = hava.Find(p=>p.Id.Equals(item.Key,StringComparison.CurrentCultureIgnoreCase));
+                        add.Time = DateTime.Now;
+                        add.Id = item.Key;
+                        add.Nums = item.Value;
+                        add.WorkerId = Identity;
+                        add.ConstomerId = constomerId;
+                        addLog.Add(add);
+                    }
+                    string jsonIn = JsonConvert.SerializeObject(addLog, Formatting.Indented);
+                    File.WriteAllText(filePath, jsonIn, new UTF8Encoding(false));
+            }
+            else
+            {
+                filePath = Path.Combine(fileDate,dataCreat[0],dataCreat[1] + ".json"); //指向月文件
+                if (!Directory.Exists(Path.Combine(filePath))) // 无月json
+                {
+                    Directory.CreateDirectory(filePath);// 创建json
+                    List<LogProduct> addLog = new List<LogProduct>();
+                    Product lookFor = new Product();
+                    foreach (var item in bill)
+                    {
+                        LogProduct add = new LogProduct();
+                        lookFor = hava.Find(p=>p.Id.Equals(item.Key,StringComparison.CurrentCultureIgnoreCase));
+                        add.Time = DateTime.Now;
+                        add.Id = item.Key;
+                        add.Nums = item.Value;
+                        add.WorkerId = Identity;
+                        add.ConstomerId = constomerId;
+                        addLog.Add(add);
+                    }
+                    string jsonIn = JsonConvert.SerializeObject(addLog, Formatting.Indented);
+                    File.WriteAllText(filePath, jsonIn, new UTF8Encoding(false));
+                    //写入文件
+                }
+                else// 有年有月有文件
+                {
+                    string originalLog = File.ReadAllText(filePath ,new UTF8Encoding(false));
+                    List<LogProduct> newLog = JsonConvert.DeserializeObject<List<LogProduct>>(originalLog);
+                    List<LogProduct> addLog = new List<LogProduct>();
+                    Product lookFor = new Product();
+                    foreach (var item in bill)
+                    {
+                        LogProduct add = new LogProduct();
+                        lookFor = hava.Find(p=>p.Id.Equals(item.Key,StringComparison.CurrentCultureIgnoreCase));
+                        add.Time = DateTime.Now;
+                        add.Id = item.Key;
+                        add.Nums = item.Value;
+                        add.WorkerId = Identity;
+                        add.ConstomerId = constomerId;
+                        addLog.Add(add);
+                    }
+                    newLog.AddRange(addLog);
+
+                    string jsonIn = JsonConvert.SerializeObject(newLog, Formatting.Indented);
+                    File.WriteAllText(filePath, jsonIn, new UTF8Encoding(false));
+                }
+            }
+            
+
+            return true;
+        }
+
         static List<LogProduct> GetLogsFile(out string logFilePathReturn)
         {
             string logFilePath = Path.Combine("..", "..", "..", "Data", "log", "productslog.json");

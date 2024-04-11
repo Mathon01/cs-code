@@ -20,5 +20,16 @@
     "Purchase_price": 22.0,
     "Selling_price": 222.0,
     "quantity": 2222
+  },
+  {
+    "Intime": "2024-04-10T10:55:25.1279401+08:00",
+    "WorkerName": "worker1",
+    "Id": "9876",
+    "ProductName": "fsdaf",
+    "Production_date": "1112-11-11T00:00:00",
+    "Expiration_date": "0001-01-01T00:00:00",
+    "Purchase_price": 2.0,
+    "Selling_price": 4.0,
+    "quantity": 567
   }
 ]

@@ -9,8 +9,8 @@
     "Selling_price": 5.0,
     "Gross_profit_per_unit": 1.5,
     "Total_purchase_quantity": 5000,
-    "Total_sales_quantity": 4547,
-    "Remaining": 453
+    "Total_sales_quantity": 4550,
+    "Remaining": 450
   },
   {
     "Id": "1002",
@@ -22,8 +22,8 @@
     "Selling_price": 3.5,
     "Gross_profit_per_unit": 1.5,
     "Total_purchase_quantity": 2000,
-    "Total_sales_quantity": 1809,
-    "Remaining": 191
+    "Total_sales_quantity": 1811,
+    "Remaining": 189
   },
   {
     "Id": "1003",
@@ -35,8 +35,8 @@
     "Selling_price": 1.5,
     "Gross_profit_per_unit": 0.5,
     "Total_purchase_quantity": 10000,
-    "Total_sales_quantity": 8004,
-    "Remaining": 1996
+    "Total_sales_quantity": 8005,
+    "Remaining": 1995
   },
   {
     "Id": "1004",
@@ -48,8 +48,8 @@
     "Selling_price": 2.0,
     "Gross_profit_per_unit": 0.8,
     "Total_purchase_quantity": 6000,
-    "Total_sales_quantity": 5004,
-    "Remaining": 996
+    "Total_sales_quantity": 5005,
+    "Remaining": 995
   },
   {
     "Id": "1005",
@@ -802,6 +802,19 @@
     "Selling_price": 222.0,
     "Gross_profit_per_unit": 200.0,
     "Total_purchase_quantity": 2222,
+    "Total_sales_quantity": 0,
+    "Remaining": 0
+  },
+  {
+    "Id": "9876",
+    "Name": "fsdaf",
+    "Production_date": "1112-11-11T00:00:00",
+    "Expiration_date": "0001-01-01T00:00:00",
+    "Category": "dasd",
+    "Purchase_price": 2.0,
+    "Selling_price": 4.0,
+    "Gross_profit_per_unit": 2.0,
+    "Total_purchase_quantity": 567,
     "Total_sales_quantity": 0,
     "Remaining": 0
   }

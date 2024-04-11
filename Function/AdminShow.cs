@@ -2,8 +2,6 @@ using Newtonsoft.Json;
 using Admin;
 using Worker;
 using mainProcess;
-using System.Drawing;
-
 
 namespace AdminShow
 {
@@ -226,7 +224,7 @@ namespace AdminShow
                 }
                 
                     
-                  // 传入文件地址，调用函数并根据文件类型读取对应的列表
+                // 传入文件地址，调用函数并根据文件类型读取对应的列表
                 List<object> listData = ReadJsonFile(path);
                 Console.WriteLine("------------------------------------------------------");
                 // 打印列表内容

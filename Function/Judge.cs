@@ -11,8 +11,7 @@ namespace Judge
     class IdentityJudge
     {
         static string IdentityFilePath = Path.Combine("..", "..", "..", "Data", "Identity.json");
-        //static string IdentityFilePath = "C:\\Users\\Matho\\Desktop\\sup\\projecttry\\Data\\Identity.json" ;
-        public static List<IdentityData> AllMembers = JsonConvert.DeserializeObject<List<IdentityData>>(File.ReadAllText(IdentityFilePath));
+       public static List<IdentityData> AllMembers = JsonConvert.DeserializeObject<List<IdentityData>>(File.ReadAllText(IdentityFilePath));
         
         //
         public static string IsWorkerOrAdmin(string name ,string key)
@@ -26,6 +25,5 @@ namespace Judge
             }
             return "worng";
         }
-
     }
 }
