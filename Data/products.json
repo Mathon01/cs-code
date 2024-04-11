@@ -9,8 +9,8 @@
     "Selling_price": 5.0,
     "Gross_profit_per_unit": 1.5,
     "Total_purchase_quantity": 5000,
-    "Total_sales_quantity": 4550,
-    "Remaining": 450
+    "Total_sales_quantity": 4553,
+    "Remaining": 447
   },
   {
     "Id": "1002",
@@ -22,8 +22,8 @@
     "Selling_price": 3.5,
     "Gross_profit_per_unit": 1.5,
     "Total_purchase_quantity": 2000,
-    "Total_sales_quantity": 1811,
-    "Remaining": 189
+    "Total_sales_quantity": 1812,
+    "Remaining": 188
   },
   {
     "Id": "1003",

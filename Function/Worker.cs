@@ -1,8 +1,8 @@
 using Newtonsoft.Json;
 using System.Text;
 using System.Security.Cryptography;
-// using System.Runtime.InteropServices;
-// using System.Text.Unicode;
+using System.Runtime.InteropServices;
+using System.Text.Unicode;
 
 
 namespace Worker
@@ -61,33 +61,34 @@ namespace Worker
                 Console.WriteLine("│        2.进货                 {0}             │",DateTime.Now.ToString("HH:mm:ss"));
                 Console.WriteLine("│        3.下班               祝您工作愉快           │");
                 Console.WriteLine("└────────────────────────────────────────────────────┘");
-
-                ConsoleKeyInfo keyInfo = Console.ReadKey(true);
-                if (keyInfo.Key == ConsoleKey.D0)
+                
+                chose = Console.ReadLine();
+                //ConsoleKeyInfo keyInfo = Console.ReadKey(); 调试时报错
+                if (chose.Equals("0",StringComparison.CurrentCultureIgnoreCase))
                 {
-                    Console.Clear();
+                    //Console.Clear();
                     return;
                 }
-                else if (keyInfo.Key == ConsoleKey.D1)
+                else if (chose.Equals("1",StringComparison.CurrentCultureIgnoreCase))
                 {
-                    Console.Clear();
+                    //Console.Clear();
                     AddBill(operatingIdentity);
                     continue;
                 }
-                else if (keyInfo.Key == ConsoleKey.D2)
+                else if (chose.Equals("2",StringComparison.CurrentCultureIgnoreCase))
                 {
-                    Console.Clear();
+                    //Console.Clear();
                     AddProduct(operatingIdentity);
                     continue;
                 }
-                else if (keyInfo.Key == ConsoleKey.D3)
+                else if (chose.Equals("3",StringComparison.CurrentCultureIgnoreCase))
                 {
-                    Console.Clear();
+                    //Console.Clear();
                     Environment.Exit(0);
                 }
                 else
                 {
-                    Console.Clear();
+                    //Console.Clear();
                     Console.WriteLine("输入非法 重新输入");
                 }
             } while (true);
@@ -112,21 +113,21 @@ namespace Worker
                 if (input.Equals("over",StringComparison.CurrentCultureIgnoreCase))
                 {
                     bill.Clear();
-                    Console.Clear();
+                    //Console.Clear();
                     return;
                 }
                 if (input.Equals("price",StringComparison.CurrentCultureIgnoreCase))
                 {
                     TotalPrice(bill, operatingIdentity);
                     bill.Clear();
-                    Console.Clear();
+                    //Console.Clear();
                     continue;
                 }
                 int productId;
                 if (!int.TryParse(input,out productId)) //int检测
                 {
                     Console.Write("ID不合法:");
-                    Console.Clear();
+                    //Console.Clear();
                     continue;
                 }
                 //商品存在检测
@@ -241,6 +242,7 @@ namespace Worker
                 }
                 
             }
+            Log.SellDataLog(bill, operatingIdentity, have, isVip);
             string updatedJson = JsonConvert.SerializeObject(change, Formatting.Indented);
             File.WriteAllText(ProductsFilePath, updatedJson, new UTF8Encoding(false));
             Console.WriteLine("--------------------------------");
@@ -539,7 +541,7 @@ namespace Worker
         }
 
         static string fileDate = Path.Combine("..", "..","..", "Data", "sellLogBuyDate");
-        static bool SellDataLog(Dictionary<string,int> bill ,string Identity ,List<Product> hava, string constomerId)
+        public static bool SellDataLog(Dictionary<string,int> bill ,string Identity ,List<Product> hava, string constomerId)
         {
             // sellLog = new List<LogAddProduct>();
             string filePath = fileDate; 
@@ -549,28 +551,30 @@ namespace Worker
             {
                 Directory.CreateDirectory(Path.Combine(fileDate,dataCreat[0]));//创建年文件夹
                 filePath = Path.Combine(filePath,dataCreat[0],dataCreat[1] + ".json"); //指向月json
+                
+                File.WriteAllText(filePath,"");
                 List<LogProduct> addLog = new List<LogProduct>();
                 Product lookFor = new Product();
                 foreach (var item in bill)
-                    {
-                        LogProduct add = new LogProduct();
-                        lookFor = hava.Find(p=>p.Id.Equals(item.Key,StringComparison.CurrentCultureIgnoreCase));
-                        add.Time = DateTime.Now;
-                        add.Id = item.Key;
-                        add.Nums = item.Value;
-                        add.WorkerId = Identity;
-                        add.ConstomerId = constomerId;
-                        addLog.Add(add);
-                    }
-                    string jsonIn = JsonConvert.SerializeObject(addLog, Formatting.Indented);
-                    File.WriteAllText(filePath, jsonIn, new UTF8Encoding(false));
+                {
+                    LogProduct add = new LogProduct();
+                    lookFor = hava.Find(p=>p.Id.Equals(item.Key,StringComparison.CurrentCultureIgnoreCase));
+                    add.Time = DateTime.Now;
+                    add.Id = item.Key;
+                    add.Nums = item.Value;
+                    add.WorkerId = Identity;
+                    add.ConstomerId = constomerId;
+                    addLog.Add(add);
+                }
+                string jsonIn = JsonConvert.SerializeObject(addLog, Formatting.Indented);
+                File.WriteAllText(filePath, jsonIn, new UTF8Encoding(false));
             }
             else
             {
                 filePath = Path.Combine(fileDate,dataCreat[0],dataCreat[1] + ".json"); //指向月文件
-                if (!Directory.Exists(Path.Combine(filePath))) // 无月json
+                if (!File.Exists(filePath)) // 无月json
                 {
-                    Directory.CreateDirectory(filePath);// 创建json
+                    File.Create(filePath);// 创建json
                     List<LogProduct> addLog = new List<LogProduct>();
                     Product lookFor = new Product();
                     foreach (var item in bill)
@@ -592,6 +596,7 @@ namespace Worker
                 {
                     string originalLog = File.ReadAllText(filePath ,new UTF8Encoding(false));
                     List<LogProduct> newLog = JsonConvert.DeserializeObject<List<LogProduct>>(originalLog);
+
                     List<LogProduct> addLog = new List<LogProduct>();
                     Product lookFor = new Product();
                     foreach (var item in bill)
@@ -611,8 +616,6 @@ namespace Worker
                     File.WriteAllText(filePath, jsonIn, new UTF8Encoding(false));
                 }
             }
-            
-
             return true;
         }
 

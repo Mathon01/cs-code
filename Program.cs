@@ -43,12 +43,12 @@ namespace mainProcess
                 if (IdentityJudge.IsWorkerOrAdmin(name,Key) == "wrong")
                 {
                     Console.WriteLine("认证错误");
-                    Console.Clear();
+                    //Console.Clear();
                     continue;
                 }
                 else if (IdentityJudge.IsWorkerOrAdmin(name,Key) == "admin")
                 {
-                    Console.Clear();
+                    //Console.Clear();
                     Console.WriteLine("\\\\欢迎回来管理员////");
                     LogIn logInIt = AddInformation(name);
                     WriteLog(logInIt);
@@ -57,7 +57,7 @@ namespace mainProcess
                 }
                 else if (IdentityJudge.IsWorkerOrAdmin(name,Key) == "worker")
                 {
-                    Console.Clear();
+                    //Console.Clear();
                     Console.WriteLine("\\\\欢迎回来收银员////");
                     LogIn logInIt = AddInformation(name);
                     WriteLog(logInIt);
@@ -67,7 +67,7 @@ namespace mainProcess
                 else
                 {
                     Console.WriteLine("密钥错误");
-                    Console.Clear();
+                    //Console.Clear();
                     continue;
                 }
             } while (true);
