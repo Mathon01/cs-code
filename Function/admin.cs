@@ -59,7 +59,7 @@ namespace Admin
             while (true)
             {
                 Console.WriteLine("------------------------------------------------------");
-                Console.WriteLine("请选择添加身份类型: a.管理员  w.收银员 over.结束程序");
+                Console.WriteLine("请选择添加身份类型: a.管理员  w.收银员 b.结束程序");
                 string input = Console.ReadLine() ?? "";
                 if (input.Equals("over",StringComparison.CurrentCultureIgnoreCase))
                 {
@@ -67,7 +67,7 @@ namespace Admin
                 }
                 if (input.Length != 1)
                 {
-                    Console.WriteLine("无效选择 重新输入:");
+                    Console.WriteLine("无效选择 重新输入:");    
                     continue;
                 }
                 type = (char)input[0];

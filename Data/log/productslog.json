@@ -327,5 +327,418 @@
     "Nums": 1,
     "WorkerId": "worker1",
     "ConstomerId": "3333"
+  },
+  {
+    "Time": "2024-04-12T15:20:07.5946733+08:00",
+    "Id": "1001",
+    "Nums": 2,
+    "WorkerId": "worker1",
+    "ConstomerId": "3333"
+  },
+  {
+    "Time": "2024-04-12T15:20:07.6053826+08:00",
+    "Id": "1002",
+    "Nums": 2,
+    "WorkerId": "worker1",
+    "ConstomerId": "3333"
+  },
+  {
+    "Time": "2024-04-12T15:20:07.6186068+08:00",
+    "Id": "1003",
+    "Nums": 1,
+    "WorkerId": "worker1",
+    "ConstomerId": "3333"
+  },
+  {
+    "Time": "2024-04-12T15:20:07.6349469+08:00",
+    "Id": "1005",
+    "Nums": 1,
+    "WorkerId": "worker1",
+    "ConstomerId": "3333"
+  },
+  {
+    "Time": "2024-04-12T15:27:58.3512252+08:00",
+    "Id": "1001",
+    "Nums": 1,
+    "WorkerId": "worker1",
+    "ConstomerId": "3333"
+  },
+  {
+    "Time": "2024-04-12T15:45:24.9577403+08:00",
+    "Id": "1001",
+    "Nums": 1,
+    "WorkerId": "worker1",
+    "ConstomerId": "3333"
+  },
+  {
+    "Time": "2024-04-12T16:32:00.2645855+08:00",
+    "Id": "1001",
+    "Nums": 1,
+    "WorkerId": "worker1",
+    "ConstomerId": "3333"
+  },
+  {
+    "Time": "2024-04-12T16:32:00.2722496+08:00",
+    "Id": "1003",
+    "Nums": 1,
+    "WorkerId": "worker1",
+    "ConstomerId": "3333"
+  },
+  {
+    "Time": "2024-04-12T16:32:00.285065+08:00",
+    "Id": "1034",
+    "Nums": 1,
+    "WorkerId": "worker1",
+    "ConstomerId": "3333"
+  },
+  {
+    "Time": "2024-04-12T16:32:41.1867507+08:00",
+    "Id": "1001",
+    "Nums": 1,
+    "WorkerId": "worker1",
+    "ConstomerId": "3333"
+  },
+  {
+    "Time": "2024-04-12T16:33:27.7006382+08:00",
+    "Id": "1001",
+    "Nums": 1,
+    "WorkerId": "worker1",
+    "ConstomerId": "3333"
+  },
+  {
+    "Time": "2024-04-12T16:35:55.541888+08:00",
+    "Id": "1001",
+    "Nums": 1,
+    "WorkerId": "worker1",
+    "ConstomerId": "n"
+  },
+  {
+    "Time": "2024-04-12T16:37:25.3651791+08:00",
+    "Id": "1001",
+    "Nums": 1,
+    "WorkerId": "worker1",
+    "ConstomerId": "3333"
+  },
+  {
+    "Time": "2024-04-12T16:37:25.3728558+08:00",
+    "Id": "1002",
+    "Nums": 1,
+    "WorkerId": "worker1",
+    "ConstomerId": "3333"
+  },
+  {
+    "Time": "2024-04-12T16:38:57.9228368+08:00",
+    "Id": "1001",
+    "Nums": 1,
+    "WorkerId": "worker1",
+    "ConstomerId": "4444"
+  },
+  {
+    "Time": "2024-04-12T16:38:57.9302596+08:00",
+    "Id": "1002",
+    "Nums": 1,
+    "WorkerId": "worker1",
+    "ConstomerId": "4444"
+  },
+  {
+    "Time": "2024-04-12T16:38:57.9449104+08:00",
+    "Id": "1003",
+    "Nums": 1,
+    "WorkerId": "worker1",
+    "ConstomerId": "4444"
+  },
+  {
+    "Time": "2024-04-12T16:38:57.9632078+08:00",
+    "Id": "1043",
+    "Nums": 1,
+    "WorkerId": "worker1",
+    "ConstomerId": "4444"
+  },
+  {
+    "Time": "2024-04-12T16:38:57.9857233+08:00",
+    "Id": "1032",
+    "Nums": 1,
+    "WorkerId": "worker1",
+    "ConstomerId": "4444"
+  },
+  {
+    "Time": "2024-04-12T16:39:49.847158+08:00",
+    "Id": "1001",
+    "Nums": 1,
+    "WorkerId": "worker1",
+    "ConstomerId": "2222"
+  },
+  {
+    "Time": "2024-04-12T16:39:49.8553642+08:00",
+    "Id": "1043",
+    "Nums": 1,
+    "WorkerId": "worker1",
+    "ConstomerId": "2222"
+  },
+  {
+    "Time": "2024-04-12T16:39:49.8697319+08:00",
+    "Id": "1023",
+    "Nums": 1,
+    "WorkerId": "worker1",
+    "ConstomerId": "2222"
+  },
+  {
+    "Time": "2024-04-12T16:39:49.8928923+08:00",
+    "Id": "1042",
+    "Nums": 1,
+    "WorkerId": "worker1",
+    "ConstomerId": "2222"
+  },
+  {
+    "Time": "2024-04-12T16:41:04.1179718+08:00",
+    "Id": "1001",
+    "Nums": 1,
+    "WorkerId": "worker1",
+    "ConstomerId": "2222"
+  },
+  {
+    "Time": "2024-04-12T16:41:04.1251802+08:00",
+    "Id": "1002",
+    "Nums": 1,
+    "WorkerId": "worker1",
+    "ConstomerId": "2222"
+  },
+  {
+    "Time": "2024-04-12T16:41:04.1398233+08:00",
+    "Id": "1003",
+    "Nums": 1,
+    "WorkerId": "worker1",
+    "ConstomerId": "2222"
+  },
+  {
+    "Time": "2024-04-12T16:41:04.1620689+08:00",
+    "Id": "1004",
+    "Nums": 1,
+    "WorkerId": "worker1",
+    "ConstomerId": "2222"
+  },
+  {
+    "Time": "2024-04-12T16:45:13.0195573+08:00",
+    "Id": "1001",
+    "Nums": 1,
+    "WorkerId": "worker1",
+    "ConstomerId": "2222"
+  },
+  {
+    "Time": "2024-04-12T16:45:13.0271293+08:00",
+    "Id": "1002",
+    "Nums": 1,
+    "WorkerId": "worker1",
+    "ConstomerId": "2222"
+  },
+  {
+    "Time": "2024-04-12T16:45:13.0445939+08:00",
+    "Id": "1004",
+    "Nums": 1,
+    "WorkerId": "worker1",
+    "ConstomerId": "2222"
+  },
+  {
+    "Time": "2024-04-12T16:45:13.0651301+08:00",
+    "Id": "1032",
+    "Nums": 1,
+    "WorkerId": "worker1",
+    "ConstomerId": "2222"
+  },
+  {
+    "Time": "2024-04-12T16:45:13.0893188+08:00",
+    "Id": "1024",
+    "Nums": 1,
+    "WorkerId": "worker1",
+    "ConstomerId": "2222"
+  },
+  {
+    "Time": "2024-04-12T16:45:13.1141631+08:00",
+    "Id": "1042",
+    "Nums": 1,
+    "WorkerId": "worker1",
+    "ConstomerId": "2222"
+  },
+  {
+    "Time": "2024-04-12T16:47:54.8096587+08:00",
+    "Id": "1001",
+    "Nums": 1,
+    "WorkerId": "worker1",
+    "ConstomerId": "1111"
+  },
+  {
+    "Time": "2024-04-12T16:48:40.9016246+08:00",
+    "Id": "1001",
+    "Nums": 1,
+    "WorkerId": "worker1",
+    "ConstomerId": "1111"
+  },
+  {
+    "Time": "2024-04-12T16:50:28.9002337+08:00",
+    "Id": "1001",
+    "Nums": 1,
+    "WorkerId": "worker1",
+    "ConstomerId": "1111"
+  },
+  {
+    "Time": "2024-04-12T16:50:28.9147414+08:00",
+    "Id": "1002",
+    "Nums": 1,
+    "WorkerId": "worker1",
+    "ConstomerId": "1111"
+  },
+  {
+    "Time": "2024-04-12T16:50:28.9287035+08:00",
+    "Id": "1042",
+    "Nums": 1,
+    "WorkerId": "worker1",
+    "ConstomerId": "1111"
+  },
+  {
+    "Time": "2024-04-12T17:30:14.8003426+08:00",
+    "Id": "1002",
+    "Nums": 1,
+    "WorkerId": "worker1",
+    "ConstomerId": "3333"
+  },
+  {
+    "Time": "2024-04-12T17:30:14.8099377+08:00",
+    "Id": "1003",
+    "Nums": 1,
+    "WorkerId": "worker1",
+    "ConstomerId": "3333"
+  },
+  {
+    "Time": "2024-04-12T17:30:14.827496+08:00",
+    "Id": "1004",
+    "Nums": 1,
+    "WorkerId": "worker1",
+    "ConstomerId": "3333"
+  },
+  {
+    "Time": "2024-04-12T17:30:14.852175+08:00",
+    "Id": "1043",
+    "Nums": 1,
+    "WorkerId": "worker1",
+    "ConstomerId": "3333"
+  },
+  {
+    "Time": "2024-04-12T17:30:14.8788021+08:00",
+    "Id": "1023",
+    "Nums": 1,
+    "WorkerId": "worker1",
+    "ConstomerId": "3333"
+  },
+  {
+    "Time": "2024-04-12T17:45:54.8829996+08:00",
+    "Id": "1001",
+    "Nums": 4,
+    "WorkerId": "worker1",
+    "ConstomerId": "n"
+  },
+  {
+    "Time": "2024-04-12T17:45:54.8918423+08:00",
+    "Id": "1002",
+    "Nums": 3,
+    "WorkerId": "worker1",
+    "ConstomerId": "n"
+  },
+  {
+    "Time": "2024-04-12T17:45:54.9076832+08:00",
+    "Id": "1003",
+    "Nums": 1,
+    "WorkerId": "worker1",
+    "ConstomerId": "n"
+  },
+  {
+    "Time": "2024-04-12T17:45:54.9355451+08:00",
+    "Id": "1004",
+    "Nums": 1,
+    "WorkerId": "worker1",
+    "ConstomerId": "n"
+  },
+  {
+    "Time": "2024-04-12T18:08:19.0340314+08:00",
+    "Id": "1002",
+    "Nums": 1,
+    "WorkerId": "worker1",
+    "ConstomerId": "3333"
+  },
+  {
+    "Time": "2024-04-12T18:08:19.0392318+08:00",
+    "Id": "1003",
+    "Nums": 1,
+    "WorkerId": "worker1",
+    "ConstomerId": "3333"
+  },
+  {
+    "Time": "2024-04-12T18:08:19.0601556+08:00",
+    "Id": "1032",
+    "Nums": 1,
+    "WorkerId": "worker1",
+    "ConstomerId": "3333"
+  },
+  {
+    "Time": "2024-04-12T18:08:19.0885188+08:00",
+    "Id": "1023",
+    "Nums": 1,
+    "WorkerId": "worker1",
+    "ConstomerId": "3333"
+  },
+  {
+    "Time": "2024-04-12T18:13:52.452795+08:00",
+    "Id": "1001",
+    "Nums": 1,
+    "WorkerId": "worker1",
+    "ConstomerId": "3333"
+  },
+  {
+    "Time": "2024-04-12T21:29:56.7662137+08:00",
+    "Id": "1004",
+    "Nums": 1,
+    "WorkerId": "worker1",
+    "ConstomerId": "3333"
+  },
+  {
+    "Time": "2024-04-12T21:32:33.6656105+08:00",
+    "Id": "1004",
+    "Nums": 1,
+    "WorkerId": "worker1",
+    "ConstomerId": "3333"
+  },
+  {
+    "Time": "2024-04-12T21:33:31.3899948+08:00",
+    "Id": "1002",
+    "Nums": 1,
+    "WorkerId": "worker1",
+    "ConstomerId": "9876"
+  },
+  {
+    "Time": "2024-04-12T21:33:31.3929265+08:00",
+    "Id": "1003",
+    "Nums": 1,
+    "WorkerId": "worker1",
+    "ConstomerId": "9876"
+  },
+  {
+    "Time": "2024-04-12T21:33:31.4112277+08:00",
+    "Id": "1004",
+    "Nums": 1,
+    "WorkerId": "worker1",
+    "ConstomerId": "9876"
+  },
+  {
+    "Time": "2024-04-12T21:33:31.428167+08:00",
+    "Id": "1005",
+    "Nums": 1,
+    "WorkerId": "worker1",
+    "ConstomerId": "9876"
+  },
+  {
+    "Time": "2024-04-12T21:33:31.4546334+08:00",
+    "Id": "1032",
+    "Nums": 1,
+    "WorkerId": "worker1",
+    "ConstomerId": "9876"
   }
 ]

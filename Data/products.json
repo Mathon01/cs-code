@@ -9,8 +9,8 @@
     "Selling_price": 5.0,
     "Gross_profit_per_unit": 1.5,
     "Total_purchase_quantity": 5000,
-    "Total_sales_quantity": 4553,
-    "Remaining": 447
+    "Total_sales_quantity": 4573,
+    "Remaining": 427
   },
   {
     "Id": "1002",
@@ -22,8 +22,8 @@
     "Selling_price": 3.5,
     "Gross_profit_per_unit": 1.5,
     "Total_purchase_quantity": 2000,
-    "Total_sales_quantity": 1812,
-    "Remaining": 188
+    "Total_sales_quantity": 1825,
+    "Remaining": 175
   },
   {
     "Id": "1003",
@@ -35,8 +35,8 @@
     "Selling_price": 1.5,
     "Gross_profit_per_unit": 0.5,
     "Total_purchase_quantity": 10000,
-    "Total_sales_quantity": 8005,
-    "Remaining": 1995
+    "Total_sales_quantity": 8013,
+    "Remaining": 1987
   },
   {
     "Id": "1004",
@@ -48,8 +48,8 @@
     "Selling_price": 2.0,
     "Gross_profit_per_unit": 0.8,
     "Total_purchase_quantity": 6000,
-    "Total_sales_quantity": 5005,
-    "Remaining": 995
+    "Total_sales_quantity": 5012,
+    "Remaining": 988
   },
   {
     "Id": "1005",
@@ -61,8 +61,8 @@
     "Selling_price": 8.0,
     "Gross_profit_per_unit": 3.0,
     "Total_purchase_quantity": 1000,
-    "Total_sales_quantity": 802,
-    "Remaining": 198
+    "Total_sales_quantity": 804,
+    "Remaining": 196
   },
   {
     "Id": "1006",
@@ -295,8 +295,8 @@
     "Selling_price": 1.5,
     "Gross_profit_per_unit": 0.7,
     "Total_purchase_quantity": 8000,
-    "Total_sales_quantity": 7000,
-    "Remaining": 1000
+    "Total_sales_quantity": 7003,
+    "Remaining": 997
   },
   {
     "Id": "1024",
@@ -308,8 +308,8 @@
     "Selling_price": 6.0,
     "Gross_profit_per_unit": 1.5,
     "Total_purchase_quantity": 2000,
-    "Total_sales_quantity": 1801,
-    "Remaining": 199
+    "Total_sales_quantity": 1802,
+    "Remaining": 198
   },
   {
     "Id": "1025",
@@ -412,8 +412,8 @@
     "Selling_price": 2.8,
     "Gross_profit_per_unit": 1.0,
     "Total_purchase_quantity": 2500,
-    "Total_sales_quantity": 2004,
-    "Remaining": 496
+    "Total_sales_quantity": 2008,
+    "Remaining": 492
   },
   {
     "Id": "1033",
@@ -438,8 +438,8 @@
     "Selling_price": 4.5,
     "Gross_profit_per_unit": 1.5,
     "Total_purchase_quantity": 1800,
-    "Total_sales_quantity": 1502,
-    "Remaining": 298
+    "Total_sales_quantity": 1503,
+    "Remaining": 297
   },
   {
     "Id": "1035",
@@ -542,8 +542,8 @@
     "Selling_price": 5.0,
     "Gross_profit_per_unit": 2.0,
     "Total_purchase_quantity": 1200,
-    "Total_sales_quantity": 1002,
-    "Remaining": 198
+    "Total_sales_quantity": 1005,
+    "Remaining": 195
   },
   {
     "Id": "1043",
@@ -555,8 +555,8 @@
     "Selling_price": 3.0,
     "Gross_profit_per_unit": 1.5,
     "Total_purchase_quantity": 3000,
-    "Total_sales_quantity": 2501,
-    "Remaining": 499
+    "Total_sales_quantity": 2504,
+    "Remaining": 496
   },
   {
     "Id": "1044",

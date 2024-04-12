@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Matho\\Desktop\\cs-code\\project.csproj": {}
+    "c:\\Users\\Matho\\Desktop\\cs-code\\project.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Matho\\Desktop\\cs-code\\project.csproj": {
+    "c:\\Users\\Matho\\Desktop\\cs-code\\project.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Matho\\Desktop\\cs-code\\project.csproj",
+        "projectUniqueName": "c:\\Users\\Matho\\Desktop\\cs-code\\project.csproj",
         "projectName": "project",
-        "projectPath": "C:\\Users\\Matho\\Desktop\\cs-code\\project.csproj",
+        "projectPath": "c:\\Users\\Matho\\Desktop\\cs-code\\project.csproj",
         "packagesPath": "C:\\Users\\Matho\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Matho\\Desktop\\cs-code\\obj\\",
+        "outputPath": "c:\\Users\\Matho\\Desktop\\cs-code\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

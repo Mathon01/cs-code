@@ -1,8 +1,10 @@
 using Newtonsoft.Json;
 using System.Text;
 using System.Security.Cryptography;
-using System.Runtime.InteropServices;
-using System.Text.Unicode;
+using AdminShow;
+using System.Reflection.Metadata;
+// using System.Runtime.InteropServices;
+// using System.Text.Unicode;
 
 
 namespace Worker
@@ -56,14 +58,14 @@ namespace Worker
             do
             {   
                 Console.WriteLine("┌────────────────────────────────────────────────────┐");
-                Console.WriteLine("│        0.返回上一级            现在是：            │");
+                Console.WriteLine("│        0.返回上一级            现在是              │");
                 Console.WriteLine("│        1.结账                {0}            │",DateTime.Now.ToString("yyyy-MM-dd"));
                 Console.WriteLine("│        2.进货                 {0}             │",DateTime.Now.ToString("HH:mm:ss"));
                 Console.WriteLine("│        3.下班               祝您工作愉快           │");
                 Console.WriteLine("└────────────────────────────────────────────────────┘");
                 
                 chose = Console.ReadLine();
-                //ConsoleKeyInfo keyInfo = Console.ReadKey(); 调试时报错
+                // ConsoleKeyInfo keyInfo = Console.ReadKey(); //调试时报错
                 if (chose.Equals("0",StringComparison.CurrentCultureIgnoreCase))
                 {
                     //Console.Clear();
@@ -91,22 +93,51 @@ namespace Worker
                     //Console.Clear();
                     Console.WriteLine("输入非法 重新输入");
                 }
+                //-------------------------------------------------------------------
+                // if (keyInfo.Key == ConsoleKey.D0)
+                // {
+                //     //Console.Clear();
+                //     return;
+                // }
+                // else if (keyInfo.Key == ConsoleKey.D1)
+                // {
+                //     //Console.Clear();
+                //     AddBill(operatingIdentity);
+                //     continue;
+                // }
+                // else if (keyInfo.Key == ConsoleKey.D2)
+                // {
+                //     //Console.Clear();
+                //     AddProduct(operatingIdentity);
+                //     continue;
+                // }
+                // else if (keyInfo.Key == ConsoleKey.D3)
+                // {
+                //     //Console.Clear();
+                //     Environment.Exit(0);
+                // }
+                // else
+                // {
+                //     // Console.Clear();
+                //     Console.WriteLine("输入非法 重新输入");
+                // }
+                //----------------------------------------------------------------------
             } while (true);
 
         }
-        static Dictionary<string, int> bill= new Dictionary<string, int>() ;
+        
 
         static string ProductsFilePath = Path.Combine("..", "..", "..", "Data", "Products.json");
         //商品数据
         static string tmp_jsonDate = File.ReadAllText(ProductsFilePath ,new UTF8Encoding(false));
-        static List<Product> have = JsonConvert.DeserializeObject<List<Product>>(tmp_jsonDate);
+        public static List<Product> have = JsonConvert.DeserializeObject<List<Product>>(tmp_jsonDate);
         
         static void AddBill(string operatingIdentity)
         {
-            
+            Dictionary<string, int> bill= new Dictionary<string, int>() ;
             do
             {
-                Console.WriteLine("结束请输入: over  结账请输入: price");
+                Console.WriteLine("结束请输入: over  结账请输入: price  删除商品输入: del");
                 Console.Write("请输入产品ID:");
                 string input = Console.ReadLine() ?? "";
                 
@@ -116,18 +147,27 @@ namespace Worker
                     //Console.Clear();
                     return;
                 }
-                if (input.Equals("price",StringComparison.CurrentCultureIgnoreCase))
+                else if (input.Equals("price",StringComparison.CurrentCultureIgnoreCase))
                 {
                     TotalPrice(bill, operatingIdentity);
                     bill.Clear();
                     //Console.Clear();
                     continue;
                 }
+                
+                if (input.Equals("del", StringComparison.CurrentCultureIgnoreCase))
+                {
+                    //Console.Clear();
+                    bill = DelBill(bill);
+                    ShowBill(bill);
+                    continue;
+                }
+
                 int productId;
                 if (!int.TryParse(input,out productId)) //int检测
                 {
                     Console.Write("ID不合法:");
-                    //Console.Clear();
+                    // //Console.Clear();
                     continue;
                 }
                 //商品存在检测
@@ -138,32 +178,101 @@ namespace Worker
                         bill[input]++;  
                         Console.WriteLine("账单已添加");
                         Console.WriteLine("------------------------------------------------------");
-                        continue;
                     }
                     else  
                     {
                         bill.Add(input,1); 
                         Console.WriteLine("账单已添加");
                         Console.WriteLine("------------------------------------------------------");
-                        continue;
                     }
+                    //Console.Clear();
                 }
                 else
                 {
                     Console.WriteLine("当前商品Id未录入,请联系工作人员//此件商品未计入账单");
                     Console.WriteLine("------------------------------------------------------");
                 }
-                
+                // 账单展示
+                ShowBill(bill);
+
             } while (true);
 
         }
 
+        static void ShowBill(Dictionary<string, int> bill)
+        {
+            Console.WriteLine("──────────────────────────────────────────────────────");
+            Console.WriteLine();
+            Console.WriteLine("                    您当前的账单如下");
+            Console.WriteLine("           --------------------------------");
+            Console.WriteLine("           编号    名称      单价      数量");
+            foreach (var item in bill)
+            {
+                Product product = new Product();
+                product = have.Find(p => p.Id.Equals(item.Key, StringComparison.CurrentCultureIgnoreCase));
+                Console.Write($"           {product.Id,-8}"); // ID 列宽度为 6，左对齐
+                
+                if (product.Name.Length==2)
+                    Console.Write($"{product.Name,-8}"); 
+                else if (product.Name.Length==3)
+                    Console.Write($"{product.Name,-7}"); 
+                else if (product.Name.Length==4)
+                    Console.Write($"{product.Name,-6}"); 
+                else if (product.Name.Length==5)
+                    Console.Write($"{product.Name,-5}");
+                else if (product.Name.Length==6)
+                    Console.Write($"{product.Name,-4}");
+
+                Console.Write($"{product.Selling_price.ToString("C"),-9}"); // 单价格式化为货币，列宽度为 8，左对齐
+                Console.WriteLine($"{item.Value,3}"); // 数量列宽度为 6，左对齐
+            }
+            Console.WriteLine("            --------------------------------");
+        }
+
+        static Dictionary<string,int> DelBill(Dictionary<string,int> bill)
+        {
+            string delId;
+            do
+            {
+                // Console.WriteLine("编号     数量");
+                // foreach (var item in bill)
+                // {
+                //     Console.WriteLine("{0}       {1}",item.Key,item.Value);
+                // }
+                // Console.WriteLine("------------------------------------------------------");
+                ShowBill(bill);
+                Console.WriteLine("结束退货请输入: 0");
+                Console.Write("请输入您退掉的商品编号:");
+                delId = Console.ReadLine() ?? "";
+                if (delId.Equals("0", StringComparison.CurrentCultureIgnoreCase))
+                {
+                    return bill;
+                }
+                if (bill.TryGetValue(delId,out int num))
+                {
+                    if (num==1)
+                    {
+                        bill.Remove(delId);
+                    }
+                    else
+                    {
+                        bill[delId] = num - 1 ;
+                    }
+                }
+                else
+                {
+                    Console.WriteLine("您输入的编号不存在,请重新输入!");
+                }
+                //Console.Clear();
+            } while (true);
+        }
         //Vip客户数据文件路径
         static string CostomerFilePath = Path.Combine("..", "..", "..", "Data", "costomer.json");
         
 
         public static void TotalPrice(Dictionary<string, int> bill, string operatingIdentity)
         {
+            int costomerScore;
             double Discount = 1;  //折扣
             string isVip = null;    
             do
@@ -193,9 +302,9 @@ namespace Worker
             double sum = 0;
             Console.WriteLine("──────────────────────────────────────────────────────");
             Console.WriteLine();
-            Console.WriteLine("           您的账单");
-            Console.WriteLine("--------------------------------");
-            Console.WriteLine("ID      名称      单价      数量");
+            Console.WriteLine("                      您的账单");
+            Console.WriteLine("           --------------------------------");
+            Console.WriteLine("           编号    名称      单价      数量");
 
             string changeNumOfProduct = File.ReadAllText(ProductsFilePath ,new UTF8Encoding(false));
             List<Product> change = JsonConvert.DeserializeObject<List<Product>>(changeNumOfProduct);
@@ -224,7 +333,7 @@ namespace Worker
 
                     Log.WriteLog(writeLog);//  日志写入
 
-                    Console.Write($"{productId,-8}"); // ID 列宽度为 6，左对齐
+                    Console.Write($"           {productId,-8}"); // ID 列宽度为 6，左对齐
                     
                     if (product.Name.Length==2)
                         Console.Write($"{product.Name,-8}"); 
@@ -237,28 +346,35 @@ namespace Worker
                     else if (product.Name.Length==6)
                         Console.Write($"{product.Name,-4}");
 
-                    Console.Write($"{product.Selling_price.ToString("C"),-10}"); // 单价格式化为货币，列宽度为 8，左对齐
+                    Console.Write($"{product.Selling_price.ToString("C"),-9}"); // 单价格式化为货币，列宽度为 8，左对齐
                     Console.WriteLine($"{quantity,3}"); // 数量列宽度为 6，左对齐
                 }
                 
             }
-            Log.SellDataLog(bill, operatingIdentity, have, isVip);
+            Log.SellDataLog(bill, operatingIdentity, have, isVip); //日期log
+
             string updatedJson = JsonConvert.SerializeObject(change, Formatting.Indented);
             File.WriteAllText(ProductsFilePath, updatedJson, new UTF8Encoding(false));
-            Console.WriteLine("--------------------------------");
+            Console.WriteLine("           --------------------------------");
             // 结算
+            costomerScore = AddScore(Encrypt.Md5(isVip),(int)sum);
             if (Discount!=1)
             {
-                Console.WriteLine("您好VIP顾客:");
-                Console.WriteLine(string.Format("您的折扣:{0,23:P}",Discount));
+                Console.WriteLine("           您好VIP顾客:");
+                Console.WriteLine("           您目前的积分有:{0,17}",costomerScore);
+                Console.WriteLine(string.Format("           您的折扣:{0,23:P}",Discount));
             }
-            AddScore(Encrypt.Md5(isVip),(int)sum);
-            Console.WriteLine("应付：{0,26:F2}", sum);
-            Console.WriteLine("实付：{0,26:F2}",sum*Discount);
-            Console.WriteLine("--------------------------------");
+            Console.WriteLine("           应付：{0,26:F2}", sum);
+            Console.WriteLine("           实付：{0,26:F2}",sum*Discount);
+            Console.WriteLine();
+            Console.WriteLine("                      欢迎下次光临!");
+            Console.WriteLine("                 {0}",DateTime.Now.ToString("yyyy-MM-dd  HH:mm:ss"));
+            // Console.WriteLine("           {0}",DateTime.Now.ToString("HH:mm:ss"));
+            Console.WriteLine("           --------------------------------");
+            Console.WriteLine("-----------------------------------------------------");
             Console.WriteLine();
             return;
-        }
+        }           
         
         //添加商品
         public static void AddProduct(string operatingIdentity)
@@ -415,15 +531,25 @@ namespace Worker
             Console.WriteLine("商品添加成功!");
         }
 
-        //字典中是否存在        
+        /// <summary>
+        /// 货物中是否记录该商品存在    
+        /// </summary>
+        /// <param name="real"></param>
+        /// <returns></returns>  
         static bool InOrOut(string real)
         {
-            foreach (var item in have)
+            Product look = new Product();
+            look = have.Find(p => p.Id.Equals(real, StringComparison.CurrentCultureIgnoreCase));
+            // foreach (var item in have)
+            // {
+            //     if (item.Id.Equals(real,StringComparison.CurrentCultureIgnoreCase))
+            //     {
+            //         return true;
+            //     }
+            // }
+            if (look != null && !string.IsNullOrEmpty(look.Id))
             {
-                if (item.Id.Equals(real,StringComparison.CurrentCultureIgnoreCase))
-                {
-                    return true;
-                }
+                return true;
             }
             return false;
         }
@@ -464,7 +590,9 @@ namespace Worker
             return false;
         }
         
-        //办卡
+        /// <summary>
+        /// 创建会员账户
+        /// </summary>
         public static void CreatVipCostomer()
         {
             string input = null;
@@ -510,8 +638,14 @@ namespace Worker
             
         }
         
-        static void AddScore(string md5 , int num)
+        /// <summary>
+        /// 累计会员结算的积分
+        /// </summary>
+        /// <param name="md5"></param>
+        /// <param name="num"></param>
+        static int AddScore(string md5 , int num)
         {
+            int costomerScore=0;
             string constomerFile = File.ReadAllText(CostomerFilePath , new UTF8Encoding(false));
             List<Property> properties = JsonConvert.DeserializeObject<List<Property>>(constomerFile);
             foreach (var item in properties)
@@ -519,16 +653,18 @@ namespace Worker
                 if (item.Md5.Equals(md5,StringComparison.CurrentCultureIgnoreCase))
                 {
                     item.Score += num;
+                    costomerScore = item.Score;
                     break;
                 }
             }
             string updatedJson = JsonConvert.SerializeObject(properties, Formatting.Indented);
             File.WriteAllText(CostomerFilePath, updatedJson, new UTF8Encoding(false));
+            return costomerScore;
         }
 
     }
 
-    public class Log
+    class Log
     {
         static string[] NowData()
         {
@@ -541,6 +677,15 @@ namespace Worker
         }
 
         static string fileDate = Path.Combine("..", "..","..", "Data", "sellLogBuyDate");
+
+        /// <summary>
+        /// 根据年-月划分log数据
+        /// </summary>
+        /// <param name="bill"></param>
+        /// <param name="Identity"></param>
+        /// <param name="hava"></param>
+        /// <param name="constomerId"></param>
+        /// <returns></returns>
         public static bool SellDataLog(Dictionary<string,int> bill ,string Identity ,List<Product> hava, string constomerId)
         {
             // sellLog = new List<LogAddProduct>();
@@ -552,7 +697,7 @@ namespace Worker
                 Directory.CreateDirectory(Path.Combine(fileDate,dataCreat[0]));//创建年文件夹
                 filePath = Path.Combine(filePath,dataCreat[0],dataCreat[1] + ".json"); //指向月json
                 
-                File.WriteAllText(filePath,"");
+                File.WriteAllText(filePath,""); //写空文件
                 List<LogProduct> addLog = new List<LogProduct>();
                 Product lookFor = new Product();
                 foreach (var item in bill)
@@ -574,7 +719,7 @@ namespace Worker
                 filePath = Path.Combine(fileDate,dataCreat[0],dataCreat[1] + ".json"); //指向月文件
                 if (!File.Exists(filePath)) // 无月json
                 {
-                    File.Create(filePath);// 创建json
+                    File.WriteAllText(filePath,""); // 创建json
                     List<LogProduct> addLog = new List<LogProduct>();
                     Product lookFor = new Product();
                     foreach (var item in bill)

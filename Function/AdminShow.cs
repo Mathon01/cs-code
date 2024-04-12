@@ -2,6 +2,7 @@ using Newtonsoft.Json;
 using Admin;
 using Worker;
 using mainProcess;
+using System.Text;
 
 namespace AdminShow
 {
@@ -209,13 +210,19 @@ namespace AdminShow
                 Console.WriteLine("请输入您需要查看的日志:  (over.退出)");
                 Console.WriteLine("0.商品进货记录");
                 Console.WriteLine("1.工作人员登录记录");
-                Console.WriteLine("2.商品出售记录");
+                Console.WriteLine("2.商品销售记录");
+                Console.WriteLine("3.查看以时间段为分界的销售日志");
                 input = Console.ReadLine() ?? "" ;
                 if (input.Equals("over", StringComparison.CurrentCultureIgnoreCase))    return;
                 //path = null;  初始化？不需要？
                 if (input.Equals("0",StringComparison.CurrentCultureIgnoreCase)) path = addProductsLogPath;
                 else if (input.Equals("1", StringComparison.CurrentCultureIgnoreCase)) path = logInLogPath;
                 else if (input.Equals("2",StringComparison.CurrentCultureIgnoreCase)) path = logProductsLog; 
+                else if (input.Equals("3", StringComparison.CurrentCultureIgnoreCase))
+                {
+                    SellData();
+                    continue;
+                }
                 else
                 {
                     Console.WriteLine("您输入的值不存在 请重新输入!!!");
@@ -254,17 +261,116 @@ namespace AdminShow
                     {
                         LogIn login = (LogIn)item;
                         Console.WriteLine($"时间:{login.Time,-17}    工作人员ID:{login.WorkerId,-7}    操作:{login.Operating}");
-                        // Console.WriteLine($"");
-                        // Console.WriteLine($"");
-                        // Console.WriteLine("──────────────────────────────────────────────────────");
                     }
-                    // 可以根据需要添加更多的类型判断和输出逻辑
                 }
-                    
+            
+            } while (true);
+        }
+
+        static void SellData()
+        {
+            do
+            {
+                int i=0;
+                string path = Path.Combine("..", "..", "..", "Data", "sellLogBuyDate"); //文件夹地址
+                string[] yearPath = Directory.GetFileSystemEntries(path);
+                foreach (string item in yearPath)
+                {
+                    Console.WriteLine(i+1 + ": " + yearPath[i].Substring(yearPath[i].LastIndexOf('\\')) + "年");
+                    i++;
+                }
                 
+                Console.WriteLine("结束日期分类日志查看: over");
+                Console.Write("请输入对应的编号查看:");
+                string input = Console.ReadLine() ?? "";
+                int num;
+                // ConsoleKeyInfo keyInfo = Console.ReadKey(); //调试时报错
+                
+                if (input.Equals("over", StringComparison.InvariantCultureIgnoreCase))
+                {
+                    return;
+                }
+                if (!int.TryParse(input,out num))
+                {
+                    Console.WriteLine("请输入正确编号！");
+                    continue;
+                }
+                else if (num <= 0 || num > i)
+                {
+                    Console.WriteLine("请输入正确编号！");
+                    continue;
+                }
+                i=0;
+                
+                //以下确定月json文件
+                path = Path.Combine(path, yearPath[num-1].Substring(yearPath[num-1].LastIndexOf('\\') + 1 ));
+                string[] monthPath = Directory.GetFileSystemEntries(path);
+                foreach (string item in monthPath)
+                {
+                    Console.WriteLine(i+1 + ": " + monthPath[i].Substring(monthPath[i].LastIndexOf('\\') - 4));
+                    i++;
+                }
+                num=0;
+                Console.WriteLine("返回[年]日期选择: return");
+                Console.Write("请输入对应的编号查看:");
+                input = Console.ReadLine() ?? "";
+                if (input.Equals("return"))
+                {
+                    continue;
+                }
+                if (!int.TryParse(input,out num))
+                {
+                    Console.WriteLine("请输入正确编号！");
+                    continue;
+                }
+                else if (num <= 0 || num > i)
+                {
+                    Console.WriteLine("请输入正确编号！");
+                    continue;
+                }
+                path = Path.Combine(path, monthPath[num-1].Substring(monthPath[num-1].LastIndexOf('\\') + 1));
+                ShowDateLog(path);
 
             } while (true);
         }
+
+        static void ShowDateLog (string path)
+        {
+            string jsonFile = File.ReadAllText(path, new UTF8Encoding(false));
+            Dictionary<string, int> log = new Dictionary<string, int>();
+            List<LogProduct> logs = JsonConvert.DeserializeObject<List<LogProduct>>(jsonFile);
+
+            foreach (LogProduct item in logs)
+            {
+                if (!log.ContainsKey(item.Id))
+                    log[item.Id] = 1;
+                
+                else
+                    log[item.Id]++ ;
+            }
+            //WorkerFunctions.have;
+            var sortedPairs = log.OrderByDescending(p => p.Value); //排序
+            // 将排序后的结果转换为新的 Dictionary<string, int>
+            Dictionary<string, int> sortedDictionary = sortedPairs.ToDictionary(p => p.Key, p => p.Value); //转化
+            Worker.Product product = new Worker.Product();
+            Console.WriteLine("编号     名称     单价     销量    销售额");
+            foreach (var item in sortedDictionary)
+            {
+                product = WorkerFunctions.have.Find(p => p.Id.Equals(item.Key, StringComparison.CurrentCultureIgnoreCase));
+                
+            }
+
+
+
+
+        }
+
+
+
+
+
+
+
 
         // 根据文件地址读取 JSON 文件并返回相应的列表类型
         public static List<object> ReadJsonFile(string filePath)
