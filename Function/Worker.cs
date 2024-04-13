@@ -46,6 +46,7 @@ namespace Worker
         public double Gross_profit_per_unit { get; set; } //利润
         public int Total_purchase_quantity { get; set; }  //进货量
         public int Total_sales_quantity { get; set; }  //总销量
+        public double Sales {get; set; } //销售额
         public int Remaining { get; set; }  //剩余数量
     }
     
@@ -324,6 +325,7 @@ namespace Worker
                     product.Remaining -= quantity;  //减少库存
                     double totalPriceForProduct = product.Selling_price * quantity;  //计算单价
                     sum += totalPriceForProduct;  //计算总价
+                    product.Sales += sum;
                     // 写进日志
                     writeLog.Time = DateTime.Now;
                     writeLog.Id = product.Id;

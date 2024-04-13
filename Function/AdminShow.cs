@@ -27,9 +27,17 @@ namespace AdminShow
             do
             {
                 Console.WriteLine("------------------------------------------------------");
-                Console.WriteLine("请选择排序方式:");
-                Console.WriteLine("0.Id 1.Name 2.过期日期 3.售价 4.毛利");
-                Console.WriteLine("5.进货量 6.销量 7.库存 log.日志查看 over.返回上一级菜单");
+                Console.WriteLine("               0.Id    ");
+                Console.WriteLine("               1.Name");               
+                Console.WriteLine("               2.过期日期");
+                Console.WriteLine("               3.售价");
+                Console.WriteLine("               4.毛利");
+                Console.WriteLine("               5.进货量");
+                Console.WriteLine("               6.销量");
+                Console.WriteLine("               7.库存");
+                Console.WriteLine("               log.日志查看");
+                Console.WriteLine("               over.返回上一级菜单");
+                Console.Write("请选择排序方式:");
                 string input = Console.ReadLine() ?? "";
                 if (input.Equals("0",StringComparison.CurrentCultureIgnoreCase))
                 {
@@ -67,7 +75,6 @@ namespace AdminShow
                 {
                     LogShow.LogChose();
                 }
-                
                 else if (input.Equals("over",StringComparison.CurrentCultureIgnoreCase))
                 {
                     Functions.Chose();
@@ -122,7 +129,7 @@ namespace AdminShow
             List<Product> sortedProducts = SortList.OrderByDescending(p => p.Expiration_date).ToList();
             foreach (var product in sortedProducts)
             {
-                Console.WriteLine($"Id:{product.Id.PadRight(6)} Name:{product.Name.PadRight(6)} 过期日期:{product.Expiration_date} 售价:{product.Selling_price:F2}");
+                Console.WriteLine($"Id:{product.Id.PadRight(6)} 名称:{product.Name.PadRight(6)} 过期日期:{product.Expiration_date} 售价:{product.Selling_price:F2}");
                 Console.WriteLine($"毛利:{product.Gross_profit_per_unit:F2}      总进货量:{product.Total_purchase_quantity:F0}      总销量:{product.Total_sales_quantity:F0}     库存:{product.Remaining:F0}");
                 Console.WriteLine("------------------------------------------------------------------");
             }        
@@ -135,7 +142,7 @@ namespace AdminShow
             List<Product> sortedProducts = SortList.OrderByDescending(p => p.Selling_price).ToList();
             foreach (var product in sortedProducts)
             {
-                Console.WriteLine($"Id:{product.Id.PadRight(6)} Name:{product.Name.PadRight(6)} 过期日期:{product.Expiration_date} 售价:{product.Selling_price:F2}");
+                Console.WriteLine($"Id:{product.Id.PadRight(6)} 名称:{product.Name.PadRight(6)} 过期日期:{product.Expiration_date} 售价:{product.Selling_price:F2}");
                 Console.WriteLine($"毛利:{product.Gross_profit_per_unit:F2}      总进货量:{product.Total_purchase_quantity:F0}      总销量:{product.Total_sales_quantity:F0}     库存:{product.Remaining:F0}");
                 Console.WriteLine("------------------------------------------------------------------");
             }  
@@ -148,7 +155,7 @@ namespace AdminShow
             List<Product> sortedProducts = SortList.OrderByDescending(p => p.Gross_profit_per_unit).ToList();
             foreach (var product in sortedProducts)
             {
-                Console.WriteLine($"Id:{product.Id.PadRight(6)} Name:{product.Name.PadRight(6)} 过期日期:{product.Expiration_date} 售价:{product.Selling_price:F2}");
+                Console.WriteLine($"Id:{product.Id.PadRight(6)} 名称:{product.Name.PadRight(6)} 过期日期:{product.Expiration_date} 售价:{product.Selling_price:F2}");
                 Console.WriteLine($"毛利:{product.Gross_profit_per_unit:F2}      总进货量:{product.Total_purchase_quantity:F0}      总销量:{product.Total_sales_quantity:F0}     库存:{product.Remaining:F0}");
                 Console.WriteLine("------------------------------------------------------------------");
             }  
@@ -161,7 +168,7 @@ namespace AdminShow
             List<Product> sortedProducts = SortList.OrderByDescending(p => p.Total_purchase_quantity).ToList();
             foreach (var product in sortedProducts)
             {
-                Console.WriteLine($"Id:{product.Id.PadRight(6)} Name:{product.Name.PadRight(6)} 过期日期:{product.Expiration_date} 售价:{product.Selling_price:F2}");
+                Console.WriteLine($"Id:{product.Id.PadRight(6)} 名称:{product.Name.PadRight(6)} 过期日期:{product.Expiration_date} 售价:{product.Selling_price:F2}");
                 Console.WriteLine($"毛利:{product.Gross_profit_per_unit:F2}      总进货量:{product.Total_purchase_quantity:F0}      总销量:{product.Total_sales_quantity:F0}     库存:{product.Remaining:F0}");
                 Console.WriteLine("------------------------------------------------------------------");
             }  
@@ -174,7 +181,7 @@ namespace AdminShow
             List<Product> sortedProducts = SortList.OrderByDescending(p => p.Total_sales_quantity).ToList();
             foreach (var product in sortedProducts)
             {
-                Console.WriteLine($"Id:{product.Id.PadRight(6)} Name:{product.Name.PadRight(6)} 过期日期:{product.Expiration_date} 售价:{product.Selling_price:F2}");
+                Console.WriteLine($"Id:{product.Id.PadRight(6)} 名称:{product.Name.PadRight(6)} 过期日期:{product.Expiration_date} 售价:{product.Selling_price:F2}");
                 Console.WriteLine($"毛利:{product.Gross_profit_per_unit:F2}      总进货量:{product.Total_purchase_quantity:F0}      总销量:{product.Total_sales_quantity:F0}     库存:{product.Remaining:F0}");
                 Console.WriteLine("------------------------------------------------------------------");
             }  
@@ -187,7 +194,7 @@ namespace AdminShow
             List<Product> sortedProducts = SortList.OrderByDescending(p => p.Remaining).ToList();
             foreach (var product in sortedProducts)
             {
-                Console.WriteLine($"Id:{product.Id.PadRight(6)} Name:{product.Name.PadRight(6)} 过期日期:{product.Expiration_date} 售价:{product.Selling_price:F2}");
+                Console.WriteLine($"Id:{product.Id.PadRight(6)} 名称:{product.Name.PadRight(6)} 过期日期:{product.Expiration_date} 售价:{product.Selling_price:F2}");
                 Console.WriteLine($"毛利:{product.Gross_profit_per_unit:F2}      总进货量:{product.Total_purchase_quantity:F0}      总销量:{product.Total_sales_quantity:F0}     库存:{product.Remaining:F0}");
                 Console.WriteLine("------------------------------------------------------------------");
             }  
@@ -311,6 +318,7 @@ namespace AdminShow
                     i++;
                 }
                 num=0;
+                //增加按任意键返回
                 Console.WriteLine("返回[年]日期选择: return");
                 Console.Write("请输入对应的编号查看:");
                 input = Console.ReadLine() ?? "";
@@ -353,11 +361,27 @@ namespace AdminShow
             // 将排序后的结果转换为新的 Dictionary<string, int>
             Dictionary<string, int> sortedDictionary = sortedPairs.ToDictionary(p => p.Key, p => p.Value); //转化
             Worker.Product product = new Worker.Product();
-            Console.WriteLine("编号     名称     单价     销量    销售额");
+            Console.WriteLine("           编号    名称       单价      销量    销售额");
             foreach (var item in sortedDictionary)
             {
                 product = WorkerFunctions.have.Find(p => p.Id.Equals(item.Key, StringComparison.CurrentCultureIgnoreCase));
+                Console.Write($"           {product.Id,-8}"); // ID 列宽度为 6，左对齐
                 
+                if (product.Name.Length==2)
+                    Console.Write($"{product.Name,-8}"); 
+                else if (product.Name.Length==3)
+                    Console.Write($"{product.Name,-7}"); 
+                else if (product.Name.Length==4)
+                    Console.Write($"{product.Name,-6}"); 
+                else if (product.Name.Length==5)
+                    Console.Write($"{product.Name,-5}");
+                else if (product.Name.Length==6)
+                    Console.Write($"{product.Name,-4}");
+
+                Console.Write($"{product.Selling_price.ToString("C"),-9}"); // 单价  格式化为货币，列宽度为 8，左对齐
+                Console.Write($"{item.Value,4}"); // 数量  列宽度为 6，左对齐
+                Console.WriteLine("      {0,-6}",product.Selling_price * item.Value); //销售额
+            
             }
 
 
