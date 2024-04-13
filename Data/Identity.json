@@ -8,5 +8,20 @@
     "Identity": "worker",
     "Name": "worker1",
     "key": "2"
+  },
+  {
+    "Identity": "worker",
+    "Name": "worker2",
+    "key": "2"
+  },
+  {
+    "Identity": "admin",
+    "Name": "admin2",
+    "key": "2"
+  },
+  {
+    "Identity": "worker",
+    "Name": "worker2",
+    "key": "2"
   }
 ]

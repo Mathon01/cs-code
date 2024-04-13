@@ -31,5 +31,16 @@
     "Purchase_price": 2.0,
     "Selling_price": 4.0,
     "quantity": 567
+  },
+  {
+    "Intime": "2024-04-13T16:20:25.6058165+08:00",
+    "WorkerName": "worker1",
+    "Id": "1111",
+    "ProductName": "1",
+    "Production_date": "2001-01-01T10:00:00+08:00",
+    "Expiration_date": "0001-01-01T00:00:00",
+    "Purchase_price": 1.0,
+    "Selling_price": 1.0,
+    "quantity": 1
   }
 ]

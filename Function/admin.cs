@@ -1,10 +1,8 @@
 using System.Reflection;
-using System.Runtime.InteropServices.Marshalling;
 using System.Text;
 using AdminShow;
 using mainProcess;
 using Newtonsoft.Json;
-using Worker;
 
 namespace Admin
 {
@@ -20,37 +18,59 @@ namespace Admin
         static string IdentityFileName = Path.Combine("..", "..", "..", "Data", "Identity.json");
         public static void Chose()
         {
-            string judge ;
+            ConsoleKeyInfo keyInfo;
+            //string judge ;
             do
             {
+                
+
                 Console.WriteLine("------------------------------------------------------");
-                Console.WriteLine("请选择操作:(over.返回上一级)");
-                Console.WriteLine("0.身份信息修改 1.商品信息修改 2.商品信息查看 log.产看日志");
-                judge = Console.ReadLine() ?? "";
-                if (judge.Equals("0",StringComparison.CurrentCultureIgnoreCase))
+                Console.WriteLine("       请选择操作: ");
+                Console.WriteLine("               0.身份信息修改    ");
+                Console.WriteLine("               1.商品信息修改");               
+                Console.WriteLine("               2.商品信息查看");
+                Console.WriteLine("               3.查询商品");
+                Console.WriteLine("               4.产看日志");
+                Console.WriteLine("               o.返回上一级");
+                Console.WriteLine("------------------------------------------------------");
+                keyInfo = Console.ReadKey();
+                
+
+                if (keyInfo.Key == ConsoleKey.D0)
                 {
+                    Console.Clear();
                     ChangeDate.IdentityChose();
                 }
-                else if (judge.Equals("1",StringComparison.CurrentCultureIgnoreCase))
+                else if (keyInfo.Key == ConsoleKey.D1)
                 {
+                    Console.Clear();
                     ChangeDate.ProductsData();
                 }
-                else if (judge.Equals("2",StringComparison.CurrentCultureIgnoreCase))
+                else if (keyInfo.Key == ConsoleKey.D2)
                 {
+                    Console.Clear();
                     ShowProduct.Chose();
                 }
-                else if (judge.Equals("over",StringComparison.CurrentCultureIgnoreCase))
+                else if (keyInfo.Key == ConsoleKey.D3)
                 {
+                    Console.Clear();
+                    ShowProduct.Findproduct();
+                }
+                else if (keyInfo.Key == ConsoleKey.D4)
+                {
+                    Console.Clear();
+                    LogShow.LogChose();
+                }
+                else if (keyInfo.Key == ConsoleKey.O)
+                {
+                    Console.Clear();
                     Program.Chose();
                 }
-                else if (judge.Equals("log",StringComparison.CurrentCultureIgnoreCase))
-                {
-                    LogShow.LogChose();
-                }   
                 else
                 {
-                    Console.WriteLine("输入无效:");
+                    Console.WriteLine("重新输入! ");
                 }
+                Console.Clear();
             } while (true);
         }
         
@@ -60,60 +80,86 @@ namespace Admin
         {
             public static void IdentityChose()
             {
-                string input;
+                // string input;
+                ConsoleKeyInfo keyInfo;
                 do
                 {
-                    Console.WriteLine("0.添加  1.删除  return,返回上一级");
-                    input = Console.ReadLine() ?? "";
-                    if (input.Equals("return", StringComparison.InvariantCultureIgnoreCase))
+                    Console.WriteLine("------------------------------------------------------");
+                    Console.WriteLine("               请选择对身份进行的操作");
+                    Console.WriteLine("               0.添加  1.删除  o.返回上一级");
+                    Console.WriteLine("------------------------------------------------------");
+                    //input = Console.ReadLine() ?? "";
+                    keyInfo = Console.ReadKey();
+                    // if (input.Equals("2", StringComparison.InvariantCultureIgnoreCase))
+                    // {
+                    //     return;
+                    // }
+                    // if (input.Equals("0", StringComparison.CurrentCultureIgnoreCase))
+                    // {
+                    //     AddIdentity();
+                    // }
+                    // else if (input.Equals("1", StringComparison.CurrentCultureIgnoreCase))
+                    // {
+                    //     DelIdentity();
+                    // }
+                    // else
+                    // {
+                    //     //Console.Clear();
+                    //     continue;
+                    // }
+                    if (keyInfo.Key == ConsoleKey.D0)
                     {
-                        return;
-                    }
-                    if (input.Equals("0", StringComparison.CurrentCultureIgnoreCase))
-                    {
+                        Console.Clear();
                         AddIdentity();
                     }
-                    else if (input.Equals("1", StringComparison.CurrentCultureIgnoreCase))
+                    else if (keyInfo.Key == ConsoleKey.D1)
                     {
+                        Console.Clear();
                         DelIdentity();
+                    }
+                    else if (keyInfo.Key == ConsoleKey.O)
+                    {
+                        Console.Clear();
+                        return;
                     }
                     else
                     {
-                        //Console.Clear();
+                        Console.Clear();
                         continue;
                     }
+
                 } while (true);
             }
             static void AddIdentity()  
             {
+                ConsoleKeyInfo keyInfo;
                 char type;
                 while (true)
                 {
                     Console.WriteLine("------------------------------------------------------");
-                    Console.WriteLine("请选择添加身份类型: a.管理员  w.收银员 b.结束程序");
-                    string input = Console.ReadLine() ?? "";
-                    if (input.Equals("over",StringComparison.CurrentCultureIgnoreCase))
+                    Console.WriteLine("               请选择添加身份类型:");
+                    Console.WriteLine("               A.管理员");
+                    Console.WriteLine("               W.收银员");
+                    Console.WriteLine("               B.结束程序");
+                    Console.WriteLine("------------------------------------------------------");
+
+                    // string input = Console.ReadLine() ?? "";
+                    keyInfo = Console.ReadKey();
+                    if (keyInfo.Key == ConsoleKey.A)
                     {
-                        Chose();
-                    }
-                    if (input.Length != 1)
-                    {
-                        Console.WriteLine("无效选择 重新输入:");    
-                        continue;
-                    }
-                    type = (char)input[0];
-                    if (type == 'a')
-                    {
+                        Console.Clear();
                         Console.WriteLine("您选择了身份 [管理员] ");
-                        AddInfo(type);
+                        AddInfo((char)keyInfo.Key);
                     }
-                    else if (type == 'w')
+                    else if (keyInfo.Key == ConsoleKey.W)
                     {
-                        Console.Write("您选择了身份 [收银员] ");
-                        AddInfo(type);
+                        Console.Clear();
+                        Console.WriteLine("您选择了身份 [收银员] ");
+                        AddInfo((char)keyInfo.Key);
                     }
-                    else if (type == 'b')
+                    else if (keyInfo.Key == ConsoleKey.B)
                     {
+                        Console.Clear();
                         break;
                     }
                     else
@@ -126,17 +172,19 @@ namespace Admin
             //添加用户信息
             static void AddInfo(char IDtype)
             {
-                Console.WriteLine("请输入名字和密码请以空格隔开:");
+                Console.WriteLine("------------------------------------------------------");
+                Console.WriteLine("               请输入名字和密码请以空格隔开");
+                Console.WriteLine("------------------------------------------------------");
                 string input = Console.ReadLine() ?? "";
                 string[] parts = input.Split(' ');
                 if (parts.Length != 2)
                 {
+                    Console.Clear();
                     Console.WriteLine("格式有误,重新输入:");
                     return; 
                 }
                 IdentityData addtmp = new IdentityData();
-            
-                addtmp.Identity = (IDtype=='a') ? "admin" : "worker" ;    
+                addtmp.Identity = (IDtype=='A') ? "admin" : "worker" ;    
                 addtmp.Name = parts[0];
                 addtmp.key = parts[1];    
                 WriteIntoFile(addtmp);        
@@ -153,6 +201,7 @@ namespace Admin
                 string json = JsonConvert.SerializeObject(identityList, Formatting.Indented); 
                 // 反序列化
                 File.WriteAllText(IdentityFilePath, json ,new UTF8Encoding(false));
+                Console.Clear();
                 Console.WriteLine("\\\\添加成功////");
                 Chose();
             }
@@ -172,21 +221,24 @@ namespace Admin
                     {
                         Console.WriteLine($"Identiy:{item.Identity.PadRight(7)} Name:{item.Name.PadRight(10)} Key:{item.key.PadRight(6)}");
                     }
-                    Console.Write("请输入删除用户的名称和密码: (over.终止删除)");
+                    Console.WriteLine("请输入删除用户的名称和密码: (over.终止删除)");
                     string delInput = Console.ReadLine();
                     if (delInput.Equals("over",StringComparison.CurrentCultureIgnoreCase))
                     {
+                        Console.Clear();
                         return;
                     }
                     string[] delData = delInput.Split(' ');
                     if (delData.Length != 2)
                     {
+                        Console.Clear();
                         Console.WriteLine("数据错误,请重新输入!");
                         continue;
                     }
                     var delItem = identityList.FirstOrDefault(x => x.Name == delData[0] && x.key == delData[1]);
                     if (delItem!=null)
                     {
+                        Console.Clear();
                         identityList.Remove(delItem);
                         File.WriteAllText(IdentityFilePath, JsonConvert.SerializeObject(identityList,Formatting.Indented) ,new UTF8Encoding(false));
                         Console.WriteLine($"成功移除用户{delData[0]}");
@@ -197,9 +249,12 @@ namespace Admin
                     Console.WriteLine("请选择接下来的操作: 0.继续删除用户 任意键:返回上一界面");
                     delInput = Console.ReadLine();
                     if (delInput.Equals("0",StringComparison.CurrentCultureIgnoreCase))
+                    {
+                        Console.Clear();
                         continue;
+                    }
                     else
-                        Chose();
+                        return;
                     
                 } while (true);
             }
@@ -229,6 +284,7 @@ namespace Admin
                     Worker.Product product =products.Find(p => p.Id.Equals(input, StringComparison.CurrentCultureIgnoreCase));
                     if (input.Equals("over", StringComparison.CurrentCultureIgnoreCase))
                     {
+                        Console.Clear();
                         return;
                     }
                     if (product == null)
@@ -254,17 +310,13 @@ namespace Admin
                         // 获取用户输入的属性名称和新值
                         string propertyName = contentNum[0];
                         string newValue = contentNum[1];
-
                         // 使用反射获取产品类的属性
                         var property = typeof(Worker.Product).GetProperty(propertyName, BindingFlags.IgnoreCase | BindingFlags.Public | BindingFlags.Instance);
-
-                        // 确保属性存在
                         if (property == null)
                         {
                             Console.WriteLine($"属性 {propertyName} 不存在!");
                             continue;
                         }
-
                         // 将新值转换为与属性类型相匹配的类型
                         object convertedValue = Convert.ChangeType(newValue, property.PropertyType);
 
@@ -274,10 +326,7 @@ namespace Admin
                         // 输出修改后的产品信息
                         Console.WriteLine($"属性 {propertyName} 修改为 {newValue}。");
 
-                        // 将修改后的产品列表重新序列化为 JSON 字符串
                         string updatedProductsJson = JsonConvert.SerializeObject(products, Formatting.Indented);
-
-                        // 将修改后的产品数据写入文件
                         File.WriteAllText(productsFilePath, updatedProductsJson, new UTF8Encoding(false));
 
                         Console.WriteLine("产品数据已更新并保存到文件。");
@@ -292,3 +341,4 @@ namespace Admin
     }
 
 }
+

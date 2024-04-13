@@ -58,70 +58,71 @@ namespace Worker
             string chose;
             do
             {   
-                Console.WriteLine("┌────────────────────────────────────────────────────┐");
-                Console.WriteLine("│        0.返回上一级            现在是              │");
-                Console.WriteLine("│        1.结账                {0}            │",DateTime.Now.ToString("yyyy-MM-dd"));
-                Console.WriteLine("│        2.进货                 {0}             │",DateTime.Now.ToString("HH:mm:ss"));
-                Console.WriteLine("│        3.下班               祝您工作愉快           │");
-                Console.WriteLine("└────────────────────────────────────────────────────┘");
+                Console.WriteLine("┌──────────────────────────────────────────────────────┐");
+                Console.WriteLine("│                您好!收银员：                         │");
+                Console.WriteLine("│          0.返回上一级            现在是              │");
+                Console.WriteLine("│          1.结账                {0}            │",DateTime.Now.ToString("yyyy-MM-dd"));
+                Console.WriteLine("│          2.进货                 {0}             │",DateTime.Now.ToString("HH:mm:ss"));
+                Console.WriteLine("│          3.下班               祝您工作愉快           │");
+                Console.WriteLine("└──────────────────────────────────────────────────────┘");
                 
-                chose = Console.ReadLine();
-                // ConsoleKeyInfo keyInfo = Console.ReadKey(); //调试时报错
-                if (chose.Equals("0",StringComparison.CurrentCultureIgnoreCase))
-                {
-                    //Console.Clear();
-                    return;
-                }
-                else if (chose.Equals("1",StringComparison.CurrentCultureIgnoreCase))
-                {
-                    //Console.Clear();
-                    AddBill(operatingIdentity);
-                    continue;
-                }
-                else if (chose.Equals("2",StringComparison.CurrentCultureIgnoreCase))
-                {
-                    //Console.Clear();
-                    AddProduct(operatingIdentity);
-                    continue;
-                }
-                else if (chose.Equals("3",StringComparison.CurrentCultureIgnoreCase))
-                {
-                    //Console.Clear();
-                    Environment.Exit(0);
-                }
-                else
-                {
-                    //Console.Clear();
-                    Console.WriteLine("输入非法 重新输入");
-                }
-                //-------------------------------------------------------------------
-                // if (keyInfo.Key == ConsoleKey.D0)
+                //chose = Console.ReadLine();
+                ConsoleKeyInfo keyInfo = Console.ReadKey(); //调试时报错
+                // if (chose.Equals("0",StringComparison.CurrentCultureIgnoreCase))
                 // {
                 //     //Console.Clear();
                 //     return;
                 // }
-                // else if (keyInfo.Key == ConsoleKey.D1)
+                // else if (chose.Equals("1",StringComparison.CurrentCultureIgnoreCase))
                 // {
                 //     //Console.Clear();
                 //     AddBill(operatingIdentity);
                 //     continue;
                 // }
-                // else if (keyInfo.Key == ConsoleKey.D2)
+                // else if (chose.Equals("2",StringComparison.CurrentCultureIgnoreCase))
                 // {
                 //     //Console.Clear();
                 //     AddProduct(operatingIdentity);
                 //     continue;
                 // }
-                // else if (keyInfo.Key == ConsoleKey.D3)
+                // else if (chose.Equals("3",StringComparison.CurrentCultureIgnoreCase))
                 // {
                 //     //Console.Clear();
                 //     Environment.Exit(0);
                 // }
                 // else
                 // {
-                //     // Console.Clear();
+                //     //Console.Clear();
                 //     Console.WriteLine("输入非法 重新输入");
                 // }
+                //-------------------------------------------------------------------
+                if (keyInfo.Key == ConsoleKey.D0)
+                {
+                    Console.Clear();
+                    return;
+                }
+                else if (keyInfo.Key == ConsoleKey.D1)
+                {
+                    Console.Clear();
+                    AddBill(operatingIdentity);
+                    continue;
+                }
+                else if (keyInfo.Key == ConsoleKey.D2)
+                {
+                    Console.Clear();
+                    AddProduct(operatingIdentity);
+                    continue;
+                }
+                else if (keyInfo.Key == ConsoleKey.D3)
+                {
+                    Console.Clear();
+                    Environment.Exit(0);
+                }
+                else
+                {
+                    Console.Clear();
+                    Console.WriteLine("输入非法 重新输入");
+                }
                 //----------------------------------------------------------------------
             } while (true);
 
@@ -138,27 +139,32 @@ namespace Worker
             Dictionary<string, int> bill= new Dictionary<string, int>() ;
             do
             {
-                Console.WriteLine("结束请输入: over  结账请输入: price  删除商品输入: del");
+                Console.WriteLine();
+                Console.WriteLine("-----------------------------------------------------");
+                Console.WriteLine("              结束请输入: over    ");
+                Console.WriteLine("              结账请输入: price");
+                Console.WriteLine("              删除商品输入: del");
+                Console.WriteLine("-----------------------------------------------------");
                 Console.Write("请输入产品ID:");
                 string input = Console.ReadLine() ?? "";
                 
                 if (input.Equals("over",StringComparison.CurrentCultureIgnoreCase))
                 {
                     bill.Clear();
-                    //Console.Clear();
+                    Console.Clear();
                     return;
                 }
                 else if (input.Equals("price",StringComparison.CurrentCultureIgnoreCase))
                 {
                     TotalPrice(bill, operatingIdentity);
                     bill.Clear();
-                    //Console.Clear();
+                    Console.Clear();
                     continue;
                 }
                 
                 if (input.Equals("del", StringComparison.CurrentCultureIgnoreCase))
                 {
-                    //Console.Clear();
+                    Console.Clear();
                     bill = DelBill(bill);
                     ShowBill(bill);
                     continue;
@@ -194,6 +200,7 @@ namespace Worker
                     Console.WriteLine("------------------------------------------------------");
                 }
                 // 账单展示
+                Console.Clear();
                 ShowBill(bill);
 
             } while (true);
@@ -247,6 +254,7 @@ namespace Worker
                 delId = Console.ReadLine() ?? "";
                 if (delId.Equals("0", StringComparison.CurrentCultureIgnoreCase))
                 {
+                    Console.Clear();
                     return bill;
                 }
                 if (bill.TryGetValue(delId,out int num))
@@ -264,7 +272,7 @@ namespace Worker
                 {
                     Console.WriteLine("您输入的编号不存在,请重新输入!");
                 }
-                //Console.Clear();
+                Console.Clear();
             } while (true);
         }
         //Vip客户数据文件路径
@@ -282,11 +290,13 @@ namespace Worker
                 isVip = Console.ReadLine() ?? "";
                 if (isVip.Equals("y",StringComparison.CurrentCultureIgnoreCase))
                 {
+                    Console.Clear();
                     CreatVipCostomer();
                     continue;
                 }
                 else if (isVip.Equals("n",StringComparison.CurrentCultureIgnoreCase))
                 {
+                    Console.Clear();
                     break;
                 }
                 else if (IsVip(isVip ,out Discount))
@@ -301,6 +311,7 @@ namespace Worker
             } while (true); 
             
             double sum = 0;
+            Console.Clear();
             Console.WriteLine("──────────────────────────────────────────────────────");
             Console.WriteLine();
             Console.WriteLine("                      您的账单");
@@ -325,7 +336,7 @@ namespace Worker
                     product.Remaining -= quantity;  //减少库存
                     double totalPriceForProduct = product.Selling_price * quantity;  //计算单价
                     sum += totalPriceForProduct;  //计算总价
-                    product.Sales += sum;
+                    product.Sales += sum;  //增加销售额
                     // 写进日志
                     writeLog.Time = DateTime.Now;
                     writeLog.Id = product.Id;
@@ -334,7 +345,6 @@ namespace Worker
                     writeLog.ConstomerId = isVip;
 
                     Log.WriteLog(writeLog);//  日志写入
-
                     Console.Write($"           {productId,-8}"); // ID 列宽度为 6，左对齐
                     
                     if (product.Name.Length==2)
@@ -351,12 +361,11 @@ namespace Worker
                     Console.Write($"{product.Selling_price.ToString("C"),-9}"); // 单价格式化为货币，列宽度为 8，左对齐
                     Console.WriteLine($"{quantity,3}"); // 数量列宽度为 6，左对齐
                 }
-                
             }
             Log.SellDataLog(bill, operatingIdentity, have, isVip); //日期log
 
             string updatedJson = JsonConvert.SerializeObject(change, Formatting.Indented);
-            File.WriteAllText(ProductsFilePath, updatedJson, new UTF8Encoding(false));
+            File.WriteAllText(ProductsFilePath, updatedJson, new UTF8Encoding(false)); //更新产品信息表
             Console.WriteLine("           --------------------------------");
             // 结算
             costomerScore = AddScore(Encrypt.Md5(isVip),(int)sum);
@@ -375,6 +384,7 @@ namespace Worker
             Console.WriteLine("           --------------------------------");
             Console.WriteLine("-----------------------------------------------------");
             Console.WriteLine();
+            Console.ReadLine();
             return;
         }           
         
@@ -614,8 +624,10 @@ namespace Worker
 
                 if (OriginalCostomer.Any(c => c.Md5 == Encrypt.Md5(input)))
                 {
+                    Console.Clear();
                     Console.WriteLine("当前ID已被使用 请更换!");
-                    Console.WriteLine("──────────────────────────────────────────────────────");
+                    Console.WriteLine();
+                    // Console.WriteLine("──────────────────────────────────────────────────────");
                     continue;
                 }
 

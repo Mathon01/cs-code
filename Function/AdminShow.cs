@@ -6,24 +6,11 @@ using System.Text;
 
 namespace AdminShow
 {
-    public class Product
-    {
-        public string Id { get; set; }
-        public string Name { get; set; }
-        public DateTime Production_date { get; set; }
-        public DateTime Expiration_date { get; set; }
-        public string Category { get; set; }
-        public double Purchase_price { get; set; }
-        public double Selling_price { get; set; }
-        public double Gross_profit_per_unit { get; set; } //毛利
-        public int Total_purchase_quantity { get; set; }  //总购买量
-        public int Total_sales_quantity { get; set; }  //总销量
-        public int Remaining { get; set; }  //库存
-    }
     public class ShowProduct
     {
         public static void Chose()
         {
+            ConsoleKeyInfo keyInfo;
             do
             {
                 Console.WriteLine("------------------------------------------------------");
@@ -35,61 +22,153 @@ namespace AdminShow
                 Console.WriteLine("               5.进货量");
                 Console.WriteLine("               6.销量");
                 Console.WriteLine("               7.库存");
-                Console.WriteLine("               log.日志查看");
-                Console.WriteLine("               over.返回上一级菜单");
+                Console.WriteLine("               8.销售额");
+                Console.WriteLine("               9.日志查看");
+                Console.WriteLine("               o.返回上一级菜单");
                 Console.Write("请选择排序方式:");
-                string input = Console.ReadLine() ?? "";
-                if (input.Equals("0",StringComparison.CurrentCultureIgnoreCase))
-                {
-                    AllSort.SortId();
-                }
-                else if (input.Equals("1",StringComparison.CurrentCultureIgnoreCase))
-                {
-                    AllSort.SortName();
-                }
-                else if (input.Equals("2",StringComparison.CurrentCultureIgnoreCase))
-                {
-                    AllSort.SortExpiration_date();
-                }
-                else if (input.Equals("3",StringComparison.CurrentCultureIgnoreCase))
-                {
-                    AllSort.SortSelling_price();
-                }
-                else if (input.Equals("4",StringComparison.CurrentCultureIgnoreCase))
-                {
-                    AllSort.SortGross_profit_per_unit();
-                }
-                else if (input.Equals("5",StringComparison.CurrentCultureIgnoreCase))
-                {
-                    AllSort.SortTotal_purchase_quantity();
-                }
-                else if (input.Equals("6",StringComparison.CurrentCultureIgnoreCase))
-                {
-                    AllSort.SortTotal_sales_quantity();
-                }
-                else if (input.Equals("7",StringComparison.CurrentCultureIgnoreCase))
-                {
-                    AllSort.SortRemaining();
-                }
-                else if (input.Equals("log", StringComparison.CurrentCultureIgnoreCase))
-                {
-                    LogShow.LogChose();
-                }
-                else if (input.Equals("over",StringComparison.CurrentCultureIgnoreCase))
-                {
-                    Functions.Chose();
-                }
-                else
-                {
-                    Console.WriteLine("非法输入");
-                    //Console.WriteLine("--------------------------------------");
-                }
+                // string input = Console.ReadLine() ?? "";
+                // if (input.Equals("0",StringComparison.CurrentCultureIgnoreCase))
+                // {
+                //     AllSort.SortId();
+                // }
+                // else if (input.Equals("1",StringComparison.CurrentCultureIgnoreCase))
+                // {
+                //     AllSort.SortName();
+                // }
+                // else if (input.Equals("2",StringComparison.CurrentCultureIgnoreCase))
+                // {
+                //     AllSort.SortExpiration_date();
+                // }
+                // else if (input.Equals("3",StringComparison.CurrentCultureIgnoreCase))
+                // {
+                //     AllSort.SortSelling_price();
+                // }
+                // else if (input.Equals("4",StringComparison.CurrentCultureIgnoreCase))
+                // {
+                //     AllSort.SortGross_profit_per_unit();
+                // }
+                // else if (input.Equals("5",StringComparison.CurrentCultureIgnoreCase))
+                // {
+                //     AllSort.SortTotal_purchase_quantity();
+                // }
+                // else if (input.Equals("6",StringComparison.CurrentCultureIgnoreCase))
+                // {
+                //     AllSort.SortTotal_sales_quantity();
+                // }
+                // else if (input.Equals("7",StringComparison.CurrentCultureIgnoreCase))
+                // {
+                //     AllSort.SortRemaining();
+                // }
+                // else if (input.Equals("8", StringComparison.CurrentCultureIgnoreCase))
+                // {
+                //     AllSort.Sales();
+                // }
+                // else if (input.Equals("log", StringComparison.CurrentCultureIgnoreCase))
+                // {
+                //     LogShow.LogChose();
+                // }
+                // else if (input.Equals("over",StringComparison.CurrentCultureIgnoreCase))
+                // {
+                //     Functions.Chose();
+                // }
+                // else
+                // {
+                //     Console.WriteLine("非法输入");
+                //     //Console.WriteLine("--------------------------------------");
+                // }
 
-
+                keyInfo = Console.ReadKey(true);
+                switch (keyInfo.Key)
+                {
+                    case ConsoleKey.D0:
+                        AllSort.SortId();
+                        break;
+                    case ConsoleKey.D1:
+                        AllSort.SortName();
+                        break;
+                    case ConsoleKey.D2:
+                        AllSort.SortExpiration_date();
+                        break;
+                    case ConsoleKey.D3:
+                        AllSort.SortSelling_price();
+                        break;
+                    case ConsoleKey.D4:
+                        AllSort.SortGross_profit_per_unit();
+                        break;
+                    case ConsoleKey.D5:
+                        AllSort.SortTotal_purchase_quantity();
+                        break;
+                    case ConsoleKey.D6:
+                        AllSort.SortTotal_sales_quantity();
+                        break;
+                    case ConsoleKey.D7:
+                        AllSort.SortRemaining();
+                        break;
+                    case ConsoleKey.D8:
+                        AllSort.Sales();
+                        break;
+                    case ConsoleKey.D9:
+                        Console.Clear();
+                        LogShow.LogChose();
+                        break;
+                    case ConsoleKey.O:
+                        Console.Clear();
+                        Functions.Chose();
+                        break;
+                    default:
+                        Console.WriteLine("非法输入");
+                        break;
+                }
+                keyInfo = Console.ReadKey(true);
+                Console.Clear();
             
             } while (true);
         }
 
+
+
+        public static void Findproduct()
+        {
+            string input;
+            do
+            {
+                Console.WriteLine("-----------------------------------------------------");
+                Console.WriteLine("over.返回上一级");
+                Console.Write("请输入你需要查询的编号: ");
+                input = Console.ReadLine() ?? "";
+                if (input.Equals("over", StringComparison.CurrentCultureIgnoreCase))
+                {
+                    Console.Clear();
+                    return;
+                }
+                if (!int.TryParse(input,out int ID) || input.Length!=4)
+                {
+                    Console.Clear();
+                    Console.WriteLine("输入有误！");
+                    continue;
+                }
+                else
+                {
+                    Product product = WorkerFunctions.have.Find(p => p.Id.Equals(input, StringComparison.CurrentCultureIgnoreCase));
+                    if (product!=null)
+                    {
+                        Console.WriteLine($"Id:{product.Id.PadRight(6)} 名称:{product.Name.PadRight(6)} 过期日期:{product.Expiration_date} 售价:{product.Selling_price:F2}");
+                        Console.WriteLine($"毛利:{product.Gross_profit_per_unit:F2}     总销售额:{product.Sales}");
+                        Console.WriteLine($"总进货量:{product.Total_purchase_quantity:F0}      总销量:{product.Total_sales_quantity:F0}     库存:{product.Remaining:F0}");
+                    }
+                    else
+                    {
+                        Console.Clear();
+                        Console.WriteLine("您输入的编号不在记录中");
+                    }
+
+                }
+                Console.ReadKey();
+                Console.Clear();
+            
+            
+            } while (true);
+        }
     }
 
     public class AllSort
@@ -103,10 +182,11 @@ namespace AdminShow
             List<Product> sortedProducts = SortList.OrderByDescending(p => p.Id).ToList();
             foreach (var product in sortedProducts)
             {
-                Console.WriteLine($"Id:{product.Id.PadRight(6)} Name:{product.Name.PadRight(6)} 过期日期:{product.Expiration_date} 售价:{product.Selling_price:F2}");
-                Console.WriteLine($"毛利:{product.Gross_profit_per_unit:F2}      总进货量:{product.Total_purchase_quantity:F0}      总销量:{product.Total_sales_quantity:F0}     库存:{product.Remaining:F0}");
+                Console.WriteLine($"Id:{product.Id.PadRight(6)} 名称:{product.Name.PadRight(6)} 过期日期:{product.Expiration_date} 售价:{product.Selling_price:F2}");
+                Console.WriteLine($"毛利:{product.Gross_profit_per_unit:F2}     总销售额:{product.Sales}");
+                Console.WriteLine($"总进货量:{product.Total_purchase_quantity:F0}      总销量:{product.Total_sales_quantity:F0}     库存:{product.Remaining:F0}");
                 Console.WriteLine("------------------------------------------------------------------");
-            }
+            }  
         }
 
         public static void SortName()
@@ -116,10 +196,11 @@ namespace AdminShow
             List<Product> sortedProducts = SortList.OrderByDescending(p => p.Name).ToList();
             foreach (var product in sortedProducts)
             {
-                Console.WriteLine($"Id:{product.Id.PadRight(6)} Name:{product.Name.PadRight(6)} 过期日期:{product.Expiration_date} 售价:{product.Selling_price:F2}");
-                Console.WriteLine($"毛利:{product.Gross_profit_per_unit:F2}      总进货量:{product.Total_purchase_quantity:F0}      总销量:{product.Total_sales_quantity:F0}     库存:{product.Remaining:F0}");
+                Console.WriteLine($"Id:{product.Id.PadRight(6)} 名称:{product.Name.PadRight(6)} 过期日期:{product.Expiration_date} 售价:{product.Selling_price:F2}");
+                Console.WriteLine($"毛利:{product.Gross_profit_per_unit:F2}     总销售额:{product.Sales}");
+                Console.WriteLine($"总进货量:{product.Total_purchase_quantity:F0}      总销量:{product.Total_sales_quantity:F0}     库存:{product.Remaining:F0}");
                 Console.WriteLine("------------------------------------------------------------------");
-            }
+            }  
         }
 
         public static void SortExpiration_date()
@@ -130,9 +211,10 @@ namespace AdminShow
             foreach (var product in sortedProducts)
             {
                 Console.WriteLine($"Id:{product.Id.PadRight(6)} 名称:{product.Name.PadRight(6)} 过期日期:{product.Expiration_date} 售价:{product.Selling_price:F2}");
-                Console.WriteLine($"毛利:{product.Gross_profit_per_unit:F2}      总进货量:{product.Total_purchase_quantity:F0}      总销量:{product.Total_sales_quantity:F0}     库存:{product.Remaining:F0}");
+                Console.WriteLine($"毛利:{product.Gross_profit_per_unit:F2}     总销售额:{product.Sales}");
+                Console.WriteLine($"总进货量:{product.Total_purchase_quantity:F0}      总销量:{product.Total_sales_quantity:F0}     库存:{product.Remaining:F0}");
                 Console.WriteLine("------------------------------------------------------------------");
-            }        
+            }    
         }
 
         public static void SortSelling_price()
@@ -143,9 +225,10 @@ namespace AdminShow
             foreach (var product in sortedProducts)
             {
                 Console.WriteLine($"Id:{product.Id.PadRight(6)} 名称:{product.Name.PadRight(6)} 过期日期:{product.Expiration_date} 售价:{product.Selling_price:F2}");
-                Console.WriteLine($"毛利:{product.Gross_profit_per_unit:F2}      总进货量:{product.Total_purchase_quantity:F0}      总销量:{product.Total_sales_quantity:F0}     库存:{product.Remaining:F0}");
+                Console.WriteLine($"毛利:{product.Gross_profit_per_unit:F2}     总销售额:{product.Sales}");
+                Console.WriteLine($"总进货量:{product.Total_purchase_quantity:F0}      总销量:{product.Total_sales_quantity:F0}     库存:{product.Remaining:F0}");
                 Console.WriteLine("------------------------------------------------------------------");
-            }  
+            }    
         }
 
         public static void SortGross_profit_per_unit()
@@ -156,7 +239,8 @@ namespace AdminShow
             foreach (var product in sortedProducts)
             {
                 Console.WriteLine($"Id:{product.Id.PadRight(6)} 名称:{product.Name.PadRight(6)} 过期日期:{product.Expiration_date} 售价:{product.Selling_price:F2}");
-                Console.WriteLine($"毛利:{product.Gross_profit_per_unit:F2}      总进货量:{product.Total_purchase_quantity:F0}      总销量:{product.Total_sales_quantity:F0}     库存:{product.Remaining:F0}");
+                Console.WriteLine($"毛利:{product.Gross_profit_per_unit:F2}     总销售额:{product.Sales}");
+                Console.WriteLine($"总进货量:{product.Total_purchase_quantity:F0}      总销量:{product.Total_sales_quantity:F0}     库存:{product.Remaining:F0}");
                 Console.WriteLine("------------------------------------------------------------------");
             }  
         }
@@ -169,7 +253,8 @@ namespace AdminShow
             foreach (var product in sortedProducts)
             {
                 Console.WriteLine($"Id:{product.Id.PadRight(6)} 名称:{product.Name.PadRight(6)} 过期日期:{product.Expiration_date} 售价:{product.Selling_price:F2}");
-                Console.WriteLine($"毛利:{product.Gross_profit_per_unit:F2}      总进货量:{product.Total_purchase_quantity:F0}      总销量:{product.Total_sales_quantity:F0}     库存:{product.Remaining:F0}");
+                Console.WriteLine($"毛利:{product.Gross_profit_per_unit:F2}     总销售额:{product.Sales}");
+                Console.WriteLine($"总进货量:{product.Total_purchase_quantity:F0}      总销量:{product.Total_sales_quantity:F0}     库存:{product.Remaining:F0}");
                 Console.WriteLine("------------------------------------------------------------------");
             }  
         }
@@ -182,7 +267,8 @@ namespace AdminShow
             foreach (var product in sortedProducts)
             {
                 Console.WriteLine($"Id:{product.Id.PadRight(6)} 名称:{product.Name.PadRight(6)} 过期日期:{product.Expiration_date} 售价:{product.Selling_price:F2}");
-                Console.WriteLine($"毛利:{product.Gross_profit_per_unit:F2}      总进货量:{product.Total_purchase_quantity:F0}      总销量:{product.Total_sales_quantity:F0}     库存:{product.Remaining:F0}");
+                Console.WriteLine($"毛利:{product.Gross_profit_per_unit:F2}     总销售额:{product.Sales}");
+                Console.WriteLine($"总进货量:{product.Total_purchase_quantity:F0}      总销量:{product.Total_sales_quantity:F0}     库存:{product.Remaining:F0}");
                 Console.WriteLine("------------------------------------------------------------------");
             }  
         }
@@ -195,7 +281,21 @@ namespace AdminShow
             foreach (var product in sortedProducts)
             {
                 Console.WriteLine($"Id:{product.Id.PadRight(6)} 名称:{product.Name.PadRight(6)} 过期日期:{product.Expiration_date} 售价:{product.Selling_price:F2}");
-                Console.WriteLine($"毛利:{product.Gross_profit_per_unit:F2}      总进货量:{product.Total_purchase_quantity:F0}      总销量:{product.Total_sales_quantity:F0}     库存:{product.Remaining:F0}");
+                Console.WriteLine($"毛利:{product.Gross_profit_per_unit:F2}     总销售额:{product.Sales}");
+                Console.WriteLine($"总进货量:{product.Total_purchase_quantity:F0}      总销量:{product.Total_sales_quantity:F0}     库存:{product.Remaining:F0}");
+                Console.WriteLine("------------------------------------------------------------------");
+            }  
+        }
+        public static void Sales()
+        {
+            string jsonContent = File.ReadAllText(ProductsFilePath);
+            List<Product> SortList = JsonConvert.DeserializeObject<List<Product>>(jsonContent);
+            List<Product> sortedProducts = SortList.OrderByDescending(p => p.Remaining).ToList();
+            foreach (var product in sortedProducts)
+            {
+                Console.WriteLine($"Id:{product.Id.PadRight(6)} 名称:{product.Name.PadRight(6)} 过期日期:{product.Expiration_date} 售价:{product.Selling_price:F2}");
+                Console.WriteLine($"毛利:{product.Gross_profit_per_unit:F2}     总销售额:{product.Sales}");
+                Console.WriteLine($"总进货量:{product.Total_purchase_quantity:F0}      总销量:{product.Total_sales_quantity:F0}     库存:{product.Remaining:F0}");
                 Console.WriteLine("------------------------------------------------------------------");
             }  
         }
@@ -209,32 +309,61 @@ namespace AdminShow
 
         public static void LogChose()
         {
-            string input;
-            string path;
+            // string input;
+            string path = null;
+            ConsoleKeyInfo keyInfo;
             do
             {
                 Console.WriteLine("------------------------------------------------------");
-                Console.WriteLine("请输入您需要查看的日志:  (over.退出)");
-                Console.WriteLine("0.商品进货记录");
-                Console.WriteLine("1.工作人员登录记录");
-                Console.WriteLine("2.商品销售记录");
-                Console.WriteLine("3.查看以时间段为分界的销售日志");
-                input = Console.ReadLine() ?? "" ;
-                if (input.Equals("over", StringComparison.CurrentCultureIgnoreCase))    return;
-                //path = null;  初始化？不需要？
-                if (input.Equals("0",StringComparison.CurrentCultureIgnoreCase)) path = addProductsLogPath;
-                else if (input.Equals("1", StringComparison.CurrentCultureIgnoreCase)) path = logInLogPath;
-                else if (input.Equals("2",StringComparison.CurrentCultureIgnoreCase)) path = logProductsLog; 
-                else if (input.Equals("3", StringComparison.CurrentCultureIgnoreCase))
+                Console.WriteLine("               请输入您需要查看的日志:");
+                Console.WriteLine("               0.商品进货记录");
+                Console.WriteLine("               1.工作人员登录记录");
+                Console.WriteLine("               2.商品销售记录");
+                Console.WriteLine("               3.查看以时间段为分界的销售日志");
+                Console.WriteLine("               o.退出");
+                Console.WriteLine("------------------------------------------------------");
+                // input = Console.ReadLine() ?? "" ;
+                keyInfo = Console.ReadKey(true);
+                // if (input.Equals("over", StringComparison.CurrentCultureIgnoreCase))    return;
+                // //path = null;  初始化？不需要？
+                // if (input.Equals("0",StringComparison.CurrentCultureIgnoreCase)) path = addProductsLogPath;
+                // else if (input.Equals("1", StringComparison.CurrentCultureIgnoreCase)) path = logInLogPath;
+                // else if (input.Equals("2",StringComparison.CurrentCultureIgnoreCase)) path = logProductsLog; 
+                // else if (input.Equals("3", StringComparison.CurrentCultureIgnoreCase))
+                // {
+                //     SellData();
+                //     continue;
+                // }
+                // else
+                // {
+                //     Console.WriteLine("您输入的值不存在 请重新输入!!!");
+                //     Console.WriteLine("──────────────────────────────────────────────────────");  //标准长度
+                //     continue;
+                // }
+                switch (keyInfo.Key)
                 {
-                    SellData();
-                    continue;
-                }
-                else
-                {
-                    Console.WriteLine("您输入的值不存在 请重新输入!!!");
-                    Console.WriteLine("──────────────────────────────────────────────────────");  //标准长度
-                    continue;
+                    case ConsoleKey.D0:
+                        path = addProductsLogPath;
+                        break;
+                    case ConsoleKey.D1:
+                        path = logInLogPath;
+                        break;
+                    case ConsoleKey.D2:
+                        path = logProductsLog;
+                        break;
+                    case ConsoleKey.D3:
+                        Console.Clear();
+                        SellData();
+                        Console.Clear();
+                        continue;
+                        break;
+                    case ConsoleKey.O:
+                        Console.Clear();    
+                        return;
+                    default:
+                        Console.Clear();
+                        Console.WriteLine("您输入的值不存在 请重新输入!!!");
+                        continue;
                 }
                 
                     
@@ -270,7 +399,8 @@ namespace AdminShow
                         Console.WriteLine($"时间:{login.Time,-17}    工作人员ID:{login.WorkerId,-7}    操作:{login.Operating}");
                     }
                 }
-            
+                Console.ReadKey();
+                Console.Clear();
             } while (true);
         }
 
@@ -299,11 +429,13 @@ namespace AdminShow
                 }
                 if (!int.TryParse(input,out num))
                 {
+                    Console.Clear();
                     Console.WriteLine("请输入正确编号！");
                     continue;
                 }
                 else if (num <= 0 || num > i)
                 {
+                    Console.Clear();
                     Console.WriteLine("请输入正确编号！");
                     continue;
                 }
@@ -312,6 +444,7 @@ namespace AdminShow
                 //以下确定月json文件
                 path = Path.Combine(path, yearPath[num-1].Substring(yearPath[num-1].LastIndexOf('\\') + 1 ));
                 string[] monthPath = Directory.GetFileSystemEntries(path);
+                Console.Clear();
                 foreach (string item in monthPath)
                 {
                     Console.WriteLine(i+1 + ": " + monthPath[i].Substring(monthPath[i].LastIndexOf('\\') - 4));
@@ -324,21 +457,27 @@ namespace AdminShow
                 input = Console.ReadLine() ?? "";
                 if (input.Equals("return"))
                 {
+                    Console.Clear();
                     continue;
                 }
                 if (!int.TryParse(input,out num))
                 {
+                    Console.Clear();
                     Console.WriteLine("请输入正确编号！");
                     continue;
                 }
                 else if (num <= 0 || num > i)
                 {
+                    Console.Clear();
                     Console.WriteLine("请输入正确编号！");
                     continue;
                 }
+                Console.Clear();
                 path = Path.Combine(path, monthPath[num-1].Substring(monthPath[num-1].LastIndexOf('\\') + 1));
                 ShowDateLog(path);
-
+                Console.WriteLine("按任意键返回... ...");
+                Console.ReadKey();
+                Console.Clear();
             } while (true);
         }
 
@@ -360,7 +499,8 @@ namespace AdminShow
             var sortedPairs = log.OrderByDescending(p => p.Value); //排序
             // 将排序后的结果转换为新的 Dictionary<string, int>
             Dictionary<string, int> sortedDictionary = sortedPairs.ToDictionary(p => p.Key, p => p.Value); //转化
-            Worker.Product product = new Worker.Product();
+            Product product = new Product();
+            Console.WriteLine("──────────────────────────────────────────────────────────────");
             Console.WriteLine("           编号    名称       单价      销量    销售额");
             foreach (var item in sortedDictionary)
             {
@@ -383,18 +523,7 @@ namespace AdminShow
                 Console.WriteLine("      {0,-6}",product.Selling_price * item.Value); //销售额
             
             }
-
-
-
-
         }
-
-
-
-
-
-
-
 
         // 根据文件地址读取 JSON 文件并返回相应的列表类型
         public static List<object> ReadJsonFile(string filePath)
@@ -431,9 +560,6 @@ namespace AdminShow
 
             return result;
         }
-    
-
-
 
     }
 }
