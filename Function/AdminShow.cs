@@ -6,7 +6,7 @@ using System.Text;
 
 namespace AdminShow
 {
-    public class ShowProduct
+    class ShowProduct
     {
         public static void Chose()
         {
@@ -125,8 +125,6 @@ namespace AdminShow
             } while (true);
         }
 
-
-
         public static void Findproduct()
         {
             string input;
@@ -171,7 +169,7 @@ namespace AdminShow
         }
     }
 
-    public class AllSort
+    class AllSort
     {
         static string ProductsFilePath = Path.Combine("..", "..", "..", "Data", "Products.json");        
         //排序混乱 
@@ -526,7 +524,7 @@ namespace AdminShow
         }
 
         // 根据文件地址读取 JSON 文件并返回相应的列表类型
-        public static List<object> ReadJsonFile(string filePath)
+        static List<object> ReadJsonFile(string filePath)
         {
             // 根据文件扩展名判断文件类型
             string extension = Path.GetExtension(filePath);

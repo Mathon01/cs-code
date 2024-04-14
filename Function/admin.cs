@@ -14,7 +14,6 @@ namespace Admin
     }
     static class Functions
     {
-        
         static string IdentityFileName = Path.Combine("..", "..", "..", "Data", "Identity.json");
         public static void Chose()
         {
@@ -30,7 +29,7 @@ namespace Admin
                 Console.WriteLine("               1.商品信息修改");               
                 Console.WriteLine("               2.商品信息查看");
                 Console.WriteLine("               3.查询商品");
-                Console.WriteLine("               4.产看日志");
+                Console.WriteLine("               4.查看日志");
                 Console.WriteLine("               o.返回上一级");
                 Console.WriteLine("------------------------------------------------------");
                 keyInfo = Console.ReadKey();
@@ -73,7 +72,6 @@ namespace Admin
                 Console.Clear();
             } while (true);
         }
-        
         
         //添加用户
         class ChangeDate
@@ -281,7 +279,7 @@ namespace Admin
                     Console.WriteLine("over. 返回上一级");
                     Console.Write("请输入需要修改的产品编码:");
                     input = Console.ReadLine() ?? "";
-                    Worker.Product product =products.Find(p => p.Id.Equals(input, StringComparison.CurrentCultureIgnoreCase));
+                    Worker.Product product = products.Find(p => p.Id.Equals(input, StringComparison.CurrentCultureIgnoreCase));
                     if (input.Equals("over", StringComparison.CurrentCultureIgnoreCase))
                     {
                         Console.Clear();
@@ -311,7 +309,9 @@ namespace Admin
                         string propertyName = contentNum[0];
                         string newValue = contentNum[1];
                         // 使用反射获取产品类的属性
-                        var property = typeof(Worker.Product).GetProperty(propertyName, BindingFlags.IgnoreCase | BindingFlags.Public | BindingFlags.Instance);
+                        var property = typeof(Worker.Product).GetProperty
+                            (propertyName, BindingFlags.IgnoreCase | BindingFlags.Public | BindingFlags.Instance);
+                        
                         if (property == null)
                         {
                             Console.WriteLine($"属性 {propertyName} 不存在!");
@@ -337,8 +337,6 @@ namespace Admin
             }
 
         }
-
     }
-
 }
 

@@ -11,7 +11,7 @@ namespace Judge
     class IdentityJudge
     {
         static string IdentityFilePath = Path.Combine("..", "..", "..", "Data", "Identity.json");
-       public static List<IdentityData> AllMembers = JsonConvert.DeserializeObject<List<IdentityData>>(File.ReadAllText(IdentityFilePath));
+        static List<IdentityData> AllMembers = JsonConvert.DeserializeObject<List<IdentityData>>(File.ReadAllText(IdentityFilePath));
         
         //
         public static string IsWorkerOrAdmin(string name ,string key)

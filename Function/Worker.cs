@@ -1,15 +1,15 @@
 using Newtonsoft.Json;
 using System.Text;
 using System.Security.Cryptography;
-using AdminShow;
-using System.Reflection.Metadata;
+// using AdminShow;
+// using System.Reflection.Metadata;
 // using System.Runtime.InteropServices;
 // using System.Text.Unicode;
 
 
 namespace Worker
 {
-    public class LogProduct  //产品进出格式
+    class LogProduct  //产品进出格式
     {
         public DateTime Time {get; set;}
         public string Id{get; set;}
@@ -17,7 +17,7 @@ namespace Worker
         public string WorkerId{get; set;}
         public string ConstomerId{get; set;}
     }
-    public class LogAddProduct  //进出货物
+    class LogAddProduct  //log_进出货物
     {
         public DateTime Intime {get; set;} //进货时间
         public string WorkerName {get; set;} //操作人员
@@ -29,12 +29,12 @@ namespace Worker
         public double Selling_price { get; set; }
         public int quantity { get; set; }  //进货量
     }
-    public class Property
+    class Property  //log_登录记录
     {
         public string Md5 {get; set;}
         public int Score {get; set;}
     }
-    public class Product
+    class Product  //产品格式
     {
         public string Id { get; set; }
         public string Name { get; set; }
@@ -50,7 +50,7 @@ namespace Worker
         public int Remaining { get; set; }  //剩余数量
     }
     
-    static class WorkerFunctions
+    static class WorkerFunctions  //收银功能
     {
         public static void FunctionChose(string operatingIdentity)
         {
@@ -128,12 +128,11 @@ namespace Worker
 
         }
         
-
         static string ProductsFilePath = Path.Combine("..", "..", "..", "Data", "Products.json");
         //商品数据
         static string tmp_jsonDate = File.ReadAllText(ProductsFilePath ,new UTF8Encoding(false));
         public static List<Product> have = JsonConvert.DeserializeObject<List<Product>>(tmp_jsonDate);
-        
+        //记录账单
         static void AddBill(string operatingIdentity)
         {
             Dictionary<string, int> bill= new Dictionary<string, int>() ;
@@ -206,7 +205,7 @@ namespace Worker
             } while (true);
 
         }
-
+        // 显示账单
         static void ShowBill(Dictionary<string, int> bill)
         {
             Console.WriteLine("──────────────────────────────────────────────────────");
@@ -236,7 +235,7 @@ namespace Worker
             }
             Console.WriteLine("            --------------------------------");
         }
-
+        // 账单退货
         static Dictionary<string,int> DelBill(Dictionary<string,int> bill)
         {
             string delId;
@@ -277,9 +276,8 @@ namespace Worker
         }
         //Vip客户数据文件路径
         static string CostomerFilePath = Path.Combine("..", "..", "..", "Data", "costomer.json");
-        
-
-        public static void TotalPrice(Dictionary<string, int> bill, string operatingIdentity)
+        // 结算
+        static void TotalPrice(Dictionary<string, int> bill, string operatingIdentity)
         {
             int costomerScore;
             double Discount = 1;  //折扣
@@ -387,9 +385,8 @@ namespace Worker
             Console.ReadLine();
             return;
         }           
-        
         //添加商品
-        public static void AddProduct(string operatingIdentity)
+        static void AddProduct(string operatingIdentity)
         {
             string input="y";
             DateTime outtime;
@@ -567,7 +564,7 @@ namespace Worker
         }
 
         //确定身份和折扣
-        public static bool IsVip(string check , out double Discount)
+        static bool IsVip(string check , out double Discount)
         {
             string CostomerFileContent = File.ReadAllText(CostomerFilePath ,new UTF8Encoding(false));
             List<Property> checkList = JsonConvert.DeserializeObject<List<Property>>(CostomerFileContent);
@@ -605,7 +602,7 @@ namespace Worker
         /// <summary>
         /// 创建会员账户
         /// </summary>
-        public static void CreatVipCostomer()
+        static void CreatVipCostomer()
         {
             string input = null;
             //序列化文件数据
@@ -678,7 +675,7 @@ namespace Worker
 
     }
 
-    class Log
+    class Log  //日志
     {
         static string[] NowData()
         {
