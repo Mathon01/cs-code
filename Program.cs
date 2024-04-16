@@ -105,7 +105,7 @@ namespace mainProcess
             } while (true);
         }
 
-        public static LogIn AddInformation(string name)
+        static LogIn AddInformation(string name)
         {
             LogIn logIn = new LogIn
             {
@@ -116,8 +116,8 @@ namespace mainProcess
             return logIn;
         }
 
-        public static string logFilePath = Path.Combine("..", "..", "..", "Data", "log", "login.json");
-        public static List<LogIn> GetLogsFile()
+        static string logFilePath = Path.Combine("..", "..", "..", "Data", "log", "login.json");
+        static List<LogIn> GetLogsFile()
         {
             if (!File.Exists(logFilePath))
             {
@@ -127,7 +127,7 @@ namespace mainProcess
             return JsonConvert.DeserializeObject<List<LogIn>>(json);
         }
 
-        public static void WriteLog(LogIn inLog)
+        static void WriteLog(LogIn inLog)
         {
             List<LogIn> logs = GetLogsFile();
             logs.Add(inLog);
